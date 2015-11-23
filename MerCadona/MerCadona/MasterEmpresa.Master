@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterEmpresa.Master.cs" Inherits="MerCadona.MasterEmpresa" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_Inicio/logomercavertical.gif" PostBackUrl="~/index.aspx" Height="40px" Width="130px"/>
+        <asp:Panel runat="server" Width="100%">
+            <asp:Table runat="server" Width="100%" CellPadding="10">
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_Inicio" runat="server" Text="INICIO" PostBackUrl="~/index.aspx"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_Empresa" runat="server" Text="EMPRESA"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_Where" runat="server" Text="¿DÓNDE ESTAMOS?" PostBackUrl="~/donde.aspx"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_AtencionCliente" runat="server" Text="ATENCIÓN AL CLIENTE" PostBackUrl="~/atencion.aspx"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_Ventajas" runat="server" Text="VENTAJAS"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_ModeloGestion" runat="server" Text="MODELO DE GESTIÓN"></asp:LinkButton>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:LinkButton ID="link_Noticias" runat="server" Text="NOTICIAS"></asp:LinkButton>
+                    </asp:TableCell>                
+                </asp:TableRow>
+            </asp:Table>
+        </asp:Panel>
+        <asp:Panel runat="server">
+            <asp:ContentPlaceHolder ID="contentPanel_body" runat="server">            
+            </asp:ContentPlaceHolder>
+        </asp:Panel>
+    </form>
+</body>
+</html>
