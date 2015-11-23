@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPanel_body" runat="server">
     <asp:Label runat="server" Text="¿DÓNDE ESTAMOS?" Font-Bold="true" ForeColor="DarkGreen"></asp:Label>
-    <asp:Panel runat="server" HorizontalAlign="Center" Width="100%">
+    <asp:Panel runat="server" ID="panel_body" HorizontalAlign="Center" Width="100%">
         <asp:Table runat="server" Width="70%" HorizontalAlign="Center" BorderColor="DarkGreen" BorderWidth="1px">
             <asp:TableRow>
                 <asp:TableHeaderCell>
