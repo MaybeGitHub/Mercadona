@@ -7,108 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MerCadona {
+namespace MerCadona.Master {
     
     
-    public partial class index {
+    public partial class MasterEmpresa {
         
         /// <summary>
-        /// navegador control.
+        /// head control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel navegador;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// link_MapaWeb control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_MapaWeb;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// link_Accesibilidad control.
+        /// link_Inicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_Accesibilidad;
+        protected global::System.Web.UI.WebControls.LinkButton link_Inicio;
         
         /// <summary>
-        /// contenido control.
+        /// link_Empresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel contenido;
+        protected global::System.Web.UI.WebControls.LinkButton link_Empresa;
         
         /// <summary>
-        /// opciones control.
+        /// link_Where control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table opciones;
+        protected global::System.Web.UI.WebControls.LinkButton link_Where;
         
         /// <summary>
-        /// imgButton_Compra control.
+        /// link_AtencionCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Compra;
+        protected global::System.Web.UI.WebControls.LinkButton link_AtencionCliente;
         
         /// <summary>
-        /// imgButton_Factura control.
+        /// link_Ventajas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Factura;
+        protected global::System.Web.UI.WebControls.LinkButton link_Ventajas;
         
         /// <summary>
-        /// imgButton_Tarjeta control.
+        /// link_ModeloGestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Tarjeta;
+        protected global::System.Web.UI.WebControls.LinkButton link_ModeloGestion;
         
         /// <summary>
-        /// imgButton_Trabaja control.
+        /// link_Noticias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Trabaja;
+        protected global::System.Web.UI.WebControls.LinkButton link_Noticias;
         
         /// <summary>
-        /// imgButton_Empresa control.
+        /// panel_Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Empresa;
+        protected global::System.Web.UI.WebControls.Panel panel_Content;
         
         /// <summary>
-        /// button_Canal control.
+        /// contentPanel_body control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Canal;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentPanel_body;
     }
 }

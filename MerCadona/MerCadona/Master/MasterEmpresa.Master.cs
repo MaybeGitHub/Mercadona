@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MerCadona
+namespace MerCadona.Master
 {
-    public partial class MasterCompraOnLine : System.Web.UI.MasterPage
+    public partial class MasterEmpresa : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

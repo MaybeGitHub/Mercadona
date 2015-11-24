@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MerCadona
+namespace MerCadona.Vistas
 {
     public partial class index : System.Web.UI.Page
     {

@@ -58,21 +58,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="atencion.aspx" />
-    <Content Include="donde.aspx" />
+    <Content Include="Vistas\atencion.aspx" />
+    <Content Include="Vistas\donde.aspx" />
     <Content Include="ficheros\Supermercados.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoFormalizar.png" />
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoGuardar.png" />
-    <Content Include="index.aspx" />
-    <Content Include="MasterCompraOnLine.Master" />
-    <Content Include="menu.aspx" />
+    <Content Include="Vistas\index.aspx" />
+    <Content Include="Master\MasterCompraOnLine.Master" />
+    <Content Include="Vistas\menu.aspx" />
     <Content Include="__Controles_Usuario__\controlCarrito.ascx" />
     <Content Include="__Controles_Usuario__\controlListadoEmpresas.ascx" />
     <Content Include="__Controles_Usuario__\controlListaMiniProducto.ascx" />
     <Content Include="ficheros\provincias.csv" />
-    <Content Include="MasterEmpresa.Master" />
+    <Content Include="Master\MasterEmpresa.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,50 +116,51 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="atencion.aspx.cs">
+    <Compile Include="Controladores\CXml.cs" />
+    <Compile Include="Vistas\atencion.aspx.cs">
       <DependentUpon>atencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="atencion.aspx.designer.cs">
+    <Compile Include="Vistas\atencion.aspx.designer.cs">
       <DependentUpon>atencion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="donde.aspx.cs">
+    <Compile Include="Vistas\donde.aspx.cs">
       <DependentUpon>donde.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="donde.aspx.designer.cs">
+    <Compile Include="Vistas\donde.aspx.designer.cs">
       <DependentUpon>donde.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
+    <Compile Include="Vistas\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
+    <Compile Include="Vistas\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterCompraOnLine.Master.cs">
+    <Compile Include="Master\MasterCompraOnLine.Master.cs">
       <DependentUpon>MasterCompraOnLine.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterCompraOnLine.Master.designer.cs">
+    <Compile Include="Master\MasterCompraOnLine.Master.designer.cs">
       <DependentUpon>MasterCompraOnLine.Master</DependentUpon>
     </Compile>
-    <Compile Include="MasterEmpresa.Master.cs">
+    <Compile Include="Master\MasterEmpresa.Master.cs">
       <DependentUpon>MasterEmpresa.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterEmpresa.Master.designer.cs">
+    <Compile Include="Master\MasterEmpresa.Master.designer.cs">
       <DependentUpon>MasterEmpresa.Master</DependentUpon>
     </Compile>
-    <Compile Include="menu.aspx.cs">
+    <Compile Include="Vistas\menu.aspx.cs">
       <DependentUpon>menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="menu.aspx.designer.cs">
+    <Compile Include="Vistas\menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Supermercado.cs" />
+    <Compile Include="Modelos\Supermercado.cs" />
     <Compile Include="__Controles_Usuario__\controlCarrito.ascx.cs">
       <DependentUpon>controlCarrito.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

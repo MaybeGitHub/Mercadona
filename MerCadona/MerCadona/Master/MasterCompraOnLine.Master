@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterCompraOnLine.master.cs" Inherits="MerCadona.MasterCompraOnLine" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterCompraOnLine.master.cs" Inherits="MerCadona.Master.MasterCompraOnLine" %>
 
 <!DOCTYPE html>
 
@@ -204,7 +204,7 @@
                             <div style="background-color:#FFCC00;color:black;position:relative;float:left;width:200px;border:3px solid black;margin-left:-10px">
                                 <span style="color:black;font-size:15px">Ticket actual</span><br />
                                 <hr />
-                                <span style="font-size:900"> ....aqui control usuario carrito....</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="font-size:90px"> ....aqui control usuario carrito....</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <br />
 
                             </div>

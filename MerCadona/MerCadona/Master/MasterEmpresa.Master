@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterEmpresa.Master.cs" Inherits="MerCadona.MasterEmpresa" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterEmpresa.Master.cs" Inherits="MerCadona.Master.MasterEmpresa" %>
 
 <!DOCTYPE html>
 

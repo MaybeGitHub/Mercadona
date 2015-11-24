@@ -7,15 +7,17 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Xml;
 using MerCadona.__Controles_Usuario__;
+using MerCadona.Modelos;
+using MerCadona.Controladores;
 
-namespace MerCadona
+namespace MerCadona.Vistas
 {
     public partial class donde : System.Web.UI.Page
     {
 
         private List<Supermercado> listaSupermercados = new List<Supermercado>();
-        string localidad = "";
-        string horario = "";
+        private string localidad = "", horario = "", provincia = "";
+        private CXml cXml = new CXml();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,8 +32,10 @@ namespace MerCadona
             {
                 if (Request.Params["ctl00$list_Localidad"] != null) localidad = Request.Params["ctl00$list_Localidad"];
                 if (Request.Params["ctl00$list_Comercial"] != null) horario = Request.Params["ctl00$list_Comercial"];
-                generarBusquedaEspecifica(Request.Params["ctl00$list_Provincias"]);
-                generarDatosFiltrado("ctl00$list_Provincias", localidad, horario);
+                if (Request.Params["ctl00$list_Provincias"] != null) provincia = Request.Params["ctl00$list_Provincias"];
+                listaSupermercados = cXml.lecturaXML(provincia, Server.MapPath("~/ficheros/Supermercados.xml"));
+                generarBusquedaEspecifica();
+                generarDatosFiltrado();
             }
             else
             {
@@ -45,6 +49,13 @@ namespace MerCadona
             panel.HorizontalAlign = HorizontalAlign.Center;
             panel.Width = new Unit("100%");
 
+            Label label = new Label();
+            label.Text = "Situacion Geografica";
+            label.Width = new Unit("70%");
+            label.BackColor = System.Drawing.Color.DarkGreen;
+            label.ForeColor = System.Drawing.Color.White;
+            panel.Controls.Add(label);
+
             Table tabla = new Table();
             tabla.Width = new Unit("70%");
             tabla.HorizontalAlign = HorizontalAlign.Center;
@@ -53,16 +64,6 @@ namespace MerCadona
 
             TableRow fila = new TableRow();
             TableCell columna = new TableCell();
-            Label label = new Label();
-            label.Text = "Situacion Geografica";
-            label.BackColor = System.Drawing.Color.DarkGreen;
-            label.ForeColor = System.Drawing.Color.White;
-            columna.Controls.Add(label);
-            fila.Cells.Add(columna);
-            tabla.Rows.Add(fila);
-
-            fila = new TableRow();
-            columna = new TableCell();
             label = new Label();
             label.Text = "Haga clic sobre el nombre de la provincia de la cual desea obtener información acerca de sus supermercados.";
             columna.Controls.Add(label);
@@ -92,7 +93,7 @@ namespace MerCadona
             rellenarDropDownList(lista, File.ReadAllLines(Server.MapPath("/ficheros/provincias.csv")).ToList());
         }
 
-        private void generarBusquedaEspecifica(string provincia)
+        private void generarBusquedaEspecifica()
         {
             Panel panel = new Panel();
             panel.HorizontalAlign = HorizontalAlign.Center;
@@ -100,6 +101,9 @@ namespace MerCadona
 
             Label label = new Label();
             label.Text = "Ajuste su busqueda";
+            label.Width = new Unit("70%");
+            label.BackColor = System.Drawing.Color.DarkGreen;
+            label.ForeColor = System.Drawing.Color.White;
             panel.Controls.Add(label);
 
             Table tabla = new Table();
@@ -139,7 +143,8 @@ namespace MerCadona
             columna.Controls.Add(lista);
             fila.Cells.Add(columna);
             tabla.Rows.Add(fila);
-            rellenarDropDownList(lista, lecturaXML(provincia));
+            List<string> localidades = listaSupermercados.Select(super => super.localidad).Distinct().ToList();
+            rellenarDropDownList(lista, localidades);
 
             fila = new TableRow();
             columna = new TableCell();
@@ -172,7 +177,7 @@ namespace MerCadona
             Master.FindControl("panel_Content").Controls.Add(panel);
         }
 
-        private void generarDatosFiltrado(string provincia, string localidad, string horario)
+        private void generarDatosFiltrado()
         {
             Panel panel = new Panel();
             panel.HorizontalAlign = HorizontalAlign.Center;
@@ -180,6 +185,9 @@ namespace MerCadona
 
             Label label = new Label();
             label.Text = provincia;
+            label.Width = new Unit("70%");
+            label.BackColor = System.Drawing.Color.DarkGreen;
+            label.ForeColor = System.Drawing.Color.White;
             panel.Controls.Add(label);
 
             Table tabla = new Table();
@@ -263,40 +271,7 @@ namespace MerCadona
 
             panel.Controls.Add(tabla);
             Master.FindControl("panel_Content").Controls.Add(panel);
-        }
-
-        private List<string> lecturaXML(string provincia)
-        {
-            List<string> ret = new List<string>();
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(Server.MapPath("~/ficheros/Supermercados.xml"));            
-            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Provincias/Provincia"))
-            {                
-                if ( xNode.Attributes["Nombre"].InnerText == provincia.ToUpper() )
-                {            
-                    foreach (XmlNode xxNode in xNode.SelectNodes("Localidad"))
-                    {                        
-                        ret.Add(xxNode.Attributes["Nombre"].InnerText);
-
-                        Supermercado super;
-                        foreach (XmlNode supermercado in xxNode.ChildNodes)
-                        {
-                            super = new Supermercado();
-                            super.localidad = xxNode.Attributes["Nombre"].InnerText;
-                            super.direccion = supermercado.SelectSingleNode("Direccion").InnerText;
-                            super.cp = supermercado.SelectSingleNode("CP").InnerText;
-                            super.telefono = supermercado.SelectSingleNode("Telefono").InnerText;
-                            super.horario = supermercado.SelectSingleNode("Horario").InnerText;
-                            if (supermercado.SelectSingleNode("Parking") == null || supermercado.SelectSingleNode("Parking").InnerText.ToLower() == "si") super.parking = true;
-                            listaSupermercados.Add(super);
-                        }
-
-                    }
-                    break;
-                }
-            }            
-            return ret.Distinct().ToList();
-        }
+        }              
 
         private void rellenarDropDownList(DropDownList lista, List<string> contenido)
         {
