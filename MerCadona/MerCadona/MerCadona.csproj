@@ -60,13 +60,16 @@
   <ItemGroup>
     <Content Include="atencion.aspx" />
     <Content Include="donde.aspx" />
-    <Content Include="ficheros\Supermercados.xml" />
+    <Content Include="ficheros\Supermercados.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoFormalizar.png" />
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoGuardar.png" />
     <Content Include="index.aspx" />
     <Content Include="MasterCompraOnLine.Master" />
     <Content Include="menu.aspx" />
     <Content Include="__Controles_Usuario__\controlCarrito.ascx" />
+    <Content Include="__Controles_Usuario__\controlListadoEmpresas.ascx" />
     <Content Include="__Controles_Usuario__\controlListaMiniProducto.ascx" />
     <Content Include="ficheros\provincias.csv" />
     <Content Include="MasterEmpresa.Master" />
@@ -156,12 +159,20 @@
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supermercado.cs" />
     <Compile Include="__Controles_Usuario__\controlCarrito.ascx.cs">
       <DependentUpon>controlCarrito.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="__Controles_Usuario__\controlCarrito.ascx.designer.cs">
       <DependentUpon>controlCarrito.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="__Controles_Usuario__\controlListadoEmpresas.ascx.cs">
+      <DependentUpon>controlListadoEmpresas.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="__Controles_Usuario__\controlListadoEmpresas.ascx.designer.cs">
+      <DependentUpon>controlListadoEmpresas.ascx</DependentUpon>
     </Compile>
     <Compile Include="__Controles_Usuario__\controlListaMiniProducto.ascx.cs">
       <DependentUpon>controlListaMiniProducto.ascx</DependentUpon>

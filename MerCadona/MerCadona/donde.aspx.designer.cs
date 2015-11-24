@@ -13,30 +13,12 @@ namespace MerCadona {
     public partial class donde {
         
         /// <summary>
-        /// panel_body control.
+        /// info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panel_body;
-        
-        /// <summary>
-        /// list_Provincias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList list_Provincias;
-        
-        /// <summary>
-        /// button_Aceptar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Aceptar;
+        protected global::System.Web.UI.WebControls.TextBox info;
     }
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_Inicio/logomercavertical.gif" PostBackUrl="~/index.aspx" Height="40px" Width="130px"/>
+        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_NuestraEmpresa/logomercahorizontal325.gif" PostBackUrl="~/index.aspx" Height="40px" Width="130px"/>
         <asp:Panel runat="server" Width="100%">
             <asp:Table runat="server" Width="100%" CellPadding="10">
                 <asp:TableRow>
@@ -38,7 +38,7 @@
                 </asp:TableRow>
             </asp:Table>
         </asp:Panel>
-        <asp:Panel runat="server">
+        <asp:Panel runat="server" ID="panel_Content">
             <asp:ContentPlaceHolder ID="contentPanel_body" runat="server">            
             </asp:ContentPlaceHolder>
         </asp:Panel>
