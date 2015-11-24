@@ -25,13 +25,15 @@
                             <asp:Label runat="server" Font-Size="X-Large">|</asp:Label>
                             <asp:LinkButton ID="link_MapaWeb" runat="server">Mapa Web</asp:LinkButton>
                             <asp:Label runat="server" Font-Size="X-Large">|</asp:Label>
-                            <asp:LinkButton ID="link_Accesibilidad" runat="server">Accesibilidad</asp:LinkButton>                                            
+                            <asp:LinkButton ID="link_Accesibilidad" runat="server">Accesibilidad</asp:LinkButton>
+                            <asp:Label runat="server" Font-Size="X-Large">|</asp:Label>
+                            <asp:LinkButton ID="link_Empleado" runat="server" PostBackUrl="~/Vistas/loginEmpleados.aspx" OnClick="link_Empleado_Click">Soy Empleado</asp:LinkButton>                                                                                        
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </asp:Panel>
             <asp:Panel runat="server" HorizontalAlign="Center" ID="contenido" Width="100%">
-                <asp:Image runat="server" ImageUrl="imagenes/imagenes_Inicio/index_Cabecera.JPG" Width="100%" />
+                <asp:Image runat="server" ImageUrl="~/imagenes/imagenes_Inicio/index_Cabecera.JPG" />
                 <br />
                 <asp:Table runat="server" ID="opciones" Width="100%">
                     <asp:TableRow>
@@ -48,7 +50,7 @@
                             <asp:ImageButton runat="server" ID="imgButton_Trabaja" ImageUrl="~/imagenes/imagenes_Inicio/index_trabaja.JPG" />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:ImageButton runat="server" ID="imgButton_Empresa" ImageUrl="~/imagenes/imagenes_Inicio/index_corp.JPG" PostBackUrl="~/menu.aspx"/>
+                            <asp:ImageButton runat="server" ID="imgButton_Empresa" ImageUrl="~/imagenes/imagenes_Inicio/index_corp.JPG" PostBackUrl="~/Vistas/menu.aspx"/>
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>

@@ -7,16 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace MerCadona.Vistas
 {
-    public partial class index : System.Web.UI.Page
+    public partial class loginEmpleados : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void link_Empleado_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Server.MapPath("~/Vistas/loginEmpleados.aspx"));
+        {            
         }
     }
 }

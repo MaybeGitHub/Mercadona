@@ -10,61 +10,43 @@
 namespace MerCadona.Vistas {
     
     
-    public partial class atencion {
+    public partial class Consultoria {
         
         /// <summary>
-        /// cv_Asunto control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cv_Asunto;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// radio_Felicitacion control.
+        /// list_Reclamaciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radio_Felicitacion;
+        protected global::System.Web.UI.WebControls.DropDownList list_Reclamaciones;
         
         /// <summary>
-        /// radio_Informacion control.
+        /// button_Consultar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radio_Informacion;
+        protected global::System.Web.UI.WebControls.Button button_Consultar;
         
         /// <summary>
-        /// radio_Sugerencia control.
+        /// label_Asunto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radio_Sugerencia;
-        
-        /// <summary>
-        /// radio_Reclamacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radio_Reclamacion;
-        
-        /// <summary>
-        /// fv_Mensaje control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator fv_Mensaje;
+        protected global::System.Web.UI.WebControls.Label label_Asunto;
         
         /// <summary>
         /// textarea_Mensaje control.
@@ -76,148 +58,112 @@ namespace MerCadona.Vistas {
         protected global::System.Web.UI.WebControls.TextBox textarea_Mensaje;
         
         /// <summary>
-        /// text_Nombre control.
+        /// label_Nombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Nombre;
+        protected global::System.Web.UI.WebControls.Label label_Nombre;
         
         /// <summary>
-        /// text_Dni control.
+        /// label_DNI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Dni;
+        protected global::System.Web.UI.WebControls.Label label_DNI;
         
         /// <summary>
-        /// text_Apellido1 control.
+        /// label_Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Apellido1;
+        protected global::System.Web.UI.WebControls.Label label_Email;
         
         /// <summary>
-        /// text_Apellido2 control.
+        /// label_Telefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Apellido2;
+        protected global::System.Web.UI.WebControls.Label label_Telefono;
         
         /// <summary>
-        /// text_Provincia control.
+        /// label_Provincia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Provincia;
+        protected global::System.Web.UI.WebControls.Label label_Provincia;
         
         /// <summary>
-        /// text_Localidad control.
+        /// label_Localidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Localidad;
+        protected global::System.Web.UI.WebControls.Label label_Localidad;
         
         /// <summary>
-        /// text_Cp control.
+        /// label_CP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Cp;
+        protected global::System.Web.UI.WebControls.Label label_CP;
         
         /// <summary>
-        /// text_TipoVia control.
+        /// label_Domicilio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_TipoVia;
+        protected global::System.Web.UI.WebControls.Label label_Domicilio;
         
         /// <summary>
-        /// text_NombreVia control.
+        /// label_Mayor14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_NombreVia;
+        protected global::System.Web.UI.WebControls.Label label_Mayor14;
         
         /// <summary>
-        /// text_Numero control.
+        /// label_Info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Numero;
+        protected global::System.Web.UI.WebControls.Label label_Info;
         
         /// <summary>
-        /// text_Telefono control.
+        /// label_Firma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Telefono;
+        protected global::System.Web.UI.WebControls.Label label_Firma;
         
         /// <summary>
-        /// text_Email control.
+        /// button_Cerrar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Email;
-        
-        /// <summary>
-        /// check_Edad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox check_Edad;
-        
-        /// <summary>
-        /// check_Autorizacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox check_Autorizacion;
-        
-        /// <summary>
-        /// check_Firma control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox check_Firma;
-        
-        /// <summary>
-        /// button_Consulta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Consulta;
+        protected global::System.Web.UI.WebControls.Button button_Cerrar;
         
         /// <summary>
         /// info control.

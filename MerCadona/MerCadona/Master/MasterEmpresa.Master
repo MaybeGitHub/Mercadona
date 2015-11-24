@@ -10,21 +10,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_NuestraEmpresa/logomercahorizontal325.gif" PostBackUrl="~/index.aspx" Height="40px" Width="130px"/>
+        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_NuestraEmpresa/logomercahorizontal325.gif" PostBackUrl="~/Vistas/index.aspx" Height="40px" Width="130px"/>
         <asp:Panel runat="server" Width="100%">
             <asp:Table runat="server" Width="100%" CellPadding="10">
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:LinkButton ID="link_Inicio" runat="server" Text="INICIO" PostBackUrl="~/index.aspx"></asp:LinkButton>
+                        <asp:LinkButton ID="link_Inicio" runat="server" Text="INICIO" PostBackUrl="~/Vistas/index.aspx"></asp:LinkButton>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:LinkButton ID="link_Empresa" runat="server" Text="EMPRESA"></asp:LinkButton>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:LinkButton ID="link_Where" runat="server" Text="¿DÓNDE ESTAMOS?" PostBackUrl="~/donde.aspx"></asp:LinkButton>
+                        <asp:LinkButton ID="link_Where" runat="server" Text="¿DÓNDE ESTAMOS?" PostBackUrl="~/Vistas/donde.aspx"></asp:LinkButton>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:LinkButton ID="link_AtencionCliente" runat="server" Text="ATENCIÓN AL CLIENTE" PostBackUrl="~/atencion.aspx"></asp:LinkButton>
+                        <asp:LinkButton ID="link_AtencionCliente" runat="server" Text="ATENCIÓN AL CLIENTE" PostBackUrl="~/Vistas/atencion.aspx"></asp:LinkButton>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:LinkButton ID="link_Ventajas" runat="server" Text="VENTAJAS"></asp:LinkButton>

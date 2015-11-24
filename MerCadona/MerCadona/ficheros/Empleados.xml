@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Empleados>
+  <Empleado>
+    <Nombre>Adolfo</Nombre>
+    <Apellidos>Rigoberto Fernandez</Apellidos>
+    <NIF>091238711D</NIF>
+    <Departamento>Almacen</Departamento>
+    <Puesto>Mozo</Puesto>
+    <Telefono tipo="movil">65542342</Telefono>
+    <Telefono tipo="fijo">915453321</Telefono>
+    <Direccion>C\ Tancaranca 8</Direccion>
+    <Localidad>Alcala de Henares</Localidad>
+    <Provincia>Madrid</Provincia>
+  </Empleado>
+  <Empleado>
+    <Nombre>Jesus</Nombre>
+    <Apellidos>Salvador Barcenilla</Apellidos>
+    <NIF>786123876S</NIF>
+    <Departamento>ControlCalidad</Departamento>
+    <Puesto>Supervior</Puesto>
+    <Telefono tipo="movil">65422342</Telefono>
+    <Telefono tipo="fijo">918853321</Telefono>
+    <Direccion>C\ Teqaranca 18</Direccion>
+    <Localidad>Alcala de Henares</Localidad>
+    <Provincia>Madrid</Provincia>
+  </Empleado>
+</Empleados>

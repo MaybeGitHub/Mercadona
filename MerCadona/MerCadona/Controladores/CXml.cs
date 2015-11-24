@@ -9,7 +9,7 @@ namespace MerCadona.Controladores
 {
     public class CXml
     {
-        public List<Supermercado> lecturaXML(string provincia, string path)
+        public List<Supermercado> lecturaXMLSupermercados(string provincia, string path)
         {
             List<Supermercado> ret = new List<Supermercado>();
             XmlDocument xDoc = new XmlDocument();

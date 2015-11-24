@@ -14,7 +14,6 @@ namespace MerCadona.Vistas
 {
     public partial class donde : System.Web.UI.Page
     {
-
         private List<Supermercado> listaSupermercados = new List<Supermercado>();
         private string localidad = "", horario = "", provincia = "";
         private CXml cXml = new CXml();
@@ -30,12 +29,19 @@ namespace MerCadona.Vistas
 
             if (IsPostBack)
             {
-                if (Request.Params["ctl00$list_Localidad"] != null) localidad = Request.Params["ctl00$list_Localidad"];
-                if (Request.Params["ctl00$list_Comercial"] != null) horario = Request.Params["ctl00$list_Comercial"];
-                if (Request.Params["ctl00$list_Provincias"] != null) provincia = Request.Params["ctl00$list_Provincias"];
-                listaSupermercados = cXml.lecturaXML(provincia, Server.MapPath("~/ficheros/Supermercados.xml"));
-                generarBusquedaEspecifica();
-                generarDatosFiltrado();
+                if (Request.Params["ctl00$button_Aceptar"] != null)
+                {
+                    if (Request.Params["ctl00$list_Localidad"] != null) localidad = Request.Params["ctl00$list_Localidad"];
+                    if (Request.Params["ctl00$list_Comercial"] != null) horario = Request.Params["ctl00$list_Comercial"];
+                    if (Request.Params["ctl00$list_Provincias"] != null) provincia = Request.Params["ctl00$list_Provincias"];
+                    listaSupermercados = cXml.lecturaXMLSupermercados(provincia, Server.MapPath("~/ficheros/Supermercados.xml"));
+                    generarBusquedaEspecifica();
+                    generarDatosFiltrado();
+                }
+                else
+                {
+                    generarBusquedaPrincipal();
+                }
             }
             else
             {

@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,7 +61,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ficheros\Empleados.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ficheros\Reclamaciones.txt" />
     <Content Include="Vistas\atencion.aspx" />
+    <Content Include="Vistas\Consultoria.aspx" />
     <Content Include="Vistas\donde.aspx" />
     <Content Include="ficheros\Supermercados.xml">
       <SubType>Designer</SubType>
@@ -67,6 +75,7 @@
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoGuardar.png" />
     <Content Include="Vistas\index.aspx" />
     <Content Include="Master\MasterCompraOnLine.Master" />
+    <Content Include="Vistas\loginEmpleados.aspx" />
     <Content Include="Vistas\menu.aspx" />
     <Content Include="__Controles_Usuario__\controlCarrito.ascx" />
     <Content Include="__Controles_Usuario__\controlListadoEmpresas.ascx" />
@@ -116,13 +125,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\CFicheros.cs" />
     <Compile Include="Controladores\CXml.cs" />
+    <Compile Include="Modelos\Reclamacion.cs" />
     <Compile Include="Vistas\atencion.aspx.cs">
       <DependentUpon>atencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\atencion.aspx.designer.cs">
       <DependentUpon>atencion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultoria.aspx.cs">
+      <DependentUpon>Consultoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultoria.aspx.designer.cs">
+      <DependentUpon>Consultoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\donde.aspx.cs">
       <DependentUpon>donde.aspx</DependentUpon>
@@ -151,6 +169,13 @@
     </Compile>
     <Compile Include="Master\MasterEmpresa.Master.designer.cs">
       <DependentUpon>MasterEmpresa.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\loginEmpleados.aspx.cs">
+      <DependentUpon>loginEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\loginEmpleados.aspx.designer.cs">
+      <DependentUpon>loginEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\menu.aspx.cs">
       <DependentUpon>menu.aspx</DependentUpon>
