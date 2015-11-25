@@ -1,0 +1,9 @@
+﻿<Usuarios>
+  <Usuario>
+    <Nombre>Jesus Salvador Barcenilla</Nombre>
+    <Contraseña>12345</Contraseña>
+    <NIF>09030912P</NIF>
+    <Telefono>918884108</Telefono>
+    <Email>jesus.salvador.barcenilla@gmail.com</Email>
+  </Usuario>
+</Usuarios>

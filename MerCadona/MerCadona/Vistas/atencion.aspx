@@ -59,7 +59,7 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell HorizontalAlign="Center" ColumnSpan="2">
-                <asp:TextBox runat="server" ID="textarea_Mensaje" Width="95%" TextMode="MultiLine" Rows="8" Columns ="50"></asp:TextBox>
+                <asp:TextBox runat="server" ID="textarea_Mensaje" Width="95%" TextMode="MultiLine" Rows="8" Columns ="50" MaxLength="140"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>

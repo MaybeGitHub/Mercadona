@@ -7,43 +7,43 @@ namespace MerCadona.Modelos
 {
     public class Reclamacion
     {
-        public int activo { get; set; }
+        public string leido { get; set; }
         public string asunto { get; set; }
-        public string usuario { get; set; }
-        public string direccion { get; set; }
-        public int mayor14 { get; set; }
-        public int informacion { get; set; }
-        public int firma { get; set; }
+        public string nombre { get; set; }
+        public string dni { get; set; }
+        public string telefono { get; set; }
+        public string email { get; set; }
+        public string provincia { get; set; }
+        public string localidad { get; set; }
+        public string cp { get; set; }
+        public string tipoVia { get; set; }
+        public string nombreVia { get; set; }
+        public string numero { get; set; }
+        public string mayor14 { get; set; }
+        public string informacion { get; set; }
+        public string firma { get; set; }
         public string mensaje { get; set; }
+
+        public Reclamacion() { }
 
         public Reclamacion(string asunto, string mensaje, string nombre, string dni, string apellido1, string apellido2, string provincia, string localidad, string cp, string tipoVia, string nombreVia, string numero, string telefono, string email, bool mayor14, bool info, bool firma)
         {
-            activo = 1;
+            leido = "No";
             this.asunto = asunto;
-            usuario = nombre + " " + apellido1 + " " + apellido2 + "&" + dni + "&" + telefono + "&" + email;
-            direccion = provincia + "&" + localidad + "&" + cp + "&" + tipoVia + "&" + nombreVia + "&" + numero;
-            if (mayor14) this.mayor14 = 1; else this.mayor14 = 0;
-            if (info) informacion = 1; else informacion = 0;
-            if (firma) this.firma = 1; else this.firma = 0;
+            this.nombre = nombre + " " + apellido1 + " " + apellido2;
+            this.dni = dni;
+            this.telefono = telefono;
+            this.email = email;
+            this.provincia = provincia;
+            this.localidad = localidad;
+            this.cp = cp;
+            this.tipoVia = tipoVia;
+            this.nombreVia = nombreVia;
+            this.numero = numero;
+            this.mayor14 = mayor14 ? "Si" : "No";
+            this.informacion = info ? "Si" : "No";
+            this.firma = firma ? "Si" : "No";
             this.mensaje = mensaje;
-        }
-
-        public Reclamacion(string lineaDatos)
-        {
-            string[] datos = lineaDatos.Split(';');
-            activo = int.Parse(datos[0]);
-            asunto = datos[1];
-            usuario = datos[2];
-            direccion = datos[3];
-            mayor14 = int.Parse(datos[4]);
-            informacion = int.Parse(datos[5]);
-            firma = int.Parse(datos[6]);
-            mensaje = datos[7];
-        }
-
-        public string construirLineaDatos()
-        {
-            return activo + ";" + asunto + ";" + usuario + ";" + direccion + ";" + mayor14 + ";" + informacion + ";" + firma + ";" + mensaje;
-        }
+        }        
     }
 }

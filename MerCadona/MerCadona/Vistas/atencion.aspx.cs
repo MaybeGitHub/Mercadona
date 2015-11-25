@@ -55,7 +55,7 @@ namespace MerCadona.Vistas
                 bool info = Request.Params["ctl00$contentPanel_body$check_Autorizacion"] == "on" ? true : false;
                 bool firma = Request.Params["ctl00$contentPanel_body$check_Firma"] == "on" ? true : false;
                 Reclamacion reclamacion = new Reclamacion(asunto, mensaje, nombre, dni, apellido1, apellido2, provincia, localidad, cp, tipoVia, nombreVia, numero, telefono, email, mayor14, info, firma);
-                CFicheros.añadirLinea(Server.MapPath("~/ficheros/Reclamaciones.txt"), reclamacion.construirLineaDatos(), false);
+                new CXml().añadirReclamacion(Server.MapPath("~/ficheros/Reclamaciones.xml"), reclamacion);
             }
         }
     }

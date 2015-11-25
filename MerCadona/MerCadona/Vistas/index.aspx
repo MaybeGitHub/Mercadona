@@ -38,7 +38,7 @@
                 <asp:Table runat="server" ID="opciones" Width="100%">
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:ImageButton runat="server" ID="imgButton_Compra" ImageUrl="~/imagenes/imagenes_Inicio/index_Compra.JPG" />
+                            <asp:ImageButton runat="server" ID="imgButton_Compra" ImageUrl="~/imagenes/imagenes_Inicio/index_Compra.JPG" PostBackUrl="~/Vistas/entrada.aspx"/>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:ImageButton runat="server" ID="imgButton_Factura" ImageUrl="~/imagenes/imagenes_Inicio/index_Factura.JPG" />

@@ -9,7 +9,7 @@ using MerCadona.Controladores;
 
 namespace MerCadona.Vistas
 {
-    public partial class Consultoria : System.Web.UI.Page
+    public partial class consultoria : System.Web.UI.Page
     {
         private List<Reclamacion> listaReclamaciones = new List<Reclamacion>();
         private CXml cXml = new CXml();
@@ -17,8 +17,7 @@ namespace MerCadona.Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             int pos = list_Reclamaciones.SelectedIndex;
-            string[] datosFicheroReclamaciones = CFicheros.leerFichero(Server.MapPath("~/ficheros/Reclamaciones.txt"));
-            listaReclamaciones.AddRange(datosFicheroReclamaciones.Where(linea => linea.Split(';')[0] == "1").Select(linea => new Reclamacion(linea)).ToList());
+            listaReclamaciones = cXml.reclamacionesNoLeidas(Server.MapPath("~/ficheros/Reclamaciones.xml"));            
             listaReclamaciones.OrderBy(reclamacion => reclamacion.asunto);
 
             if (IsPostBack)
@@ -27,10 +26,10 @@ namespace MerCadona.Vistas
                 {
                     info.Text += "KEY: " + key + "---------------------- VALOR : " + Request.Params[key] + "\n";                    
 
-                    if (key.Contains("button_Cerrar"))
+                    if (key.Contains("button_Cerrar") && listaReclamaciones.Count > 0)
                     {
-                        CFicheros.cerrarReclamacion(Server.MapPath("~/ficheros/Reclamaciones.txt"), listaReclamaciones[pos]);
-                        listaReclamaciones[pos].activo = 0;
+                        cXml.cerrarReclamacion(Server.MapPath("~/ficheros/Reclamaciones.xml"), listaReclamaciones[pos]);
+                        listaReclamaciones[pos].leido = "Si";
                         pos = 0;
                         break;
                     }
@@ -42,26 +41,33 @@ namespace MerCadona.Vistas
             }
             
             list_Reclamaciones.Items.Clear();
-            listaReclamaciones.Where(reclamacion => reclamacion.activo == 1).ToList().ForEach(reclamacion => list_Reclamaciones.Items.Add(reclamacion.asunto + "   " + reclamacion.mensaje + "..."));
-            list_Reclamaciones.SelectedIndex = pos;
-            rellenarCampos(listaReclamaciones[pos]);
-        }
+            listaReclamaciones.Where(reclamacion => reclamacion.leido == "No").ToList().ForEach(reclamacion => list_Reclamaciones.Items.Add(reclamacion.asunto + " ---- Mensaje: " + (reclamacion.mensaje.Length > 50 ? reclamacion.mensaje.Substring(0,50) + "..." : reclamacion.mensaje)));            if (listaReclamaciones.Count > 0 && list_Reclamaciones.SelectedIndex >= 0)
+            {
+                list_Reclamaciones.SelectedIndex = pos;
+                rellenarCampos(listaReclamaciones[pos]);
+            }
+            else
+            {
+                rellenarCampos(new Reclamacion());
+                list_Reclamaciones.Items.Add(new ListItem("No quedan mas reclamaciones"));
+            }
+        }        
 
         private void rellenarCampos(Reclamacion reclamacion)
         {
             label_Asunto.Text = reclamacion.asunto;
             textarea_Mensaje.Text = reclamacion.mensaje;
-            label_Nombre.Text = reclamacion.usuario.Split('&')[0]; 
-            label_DNI.Text = reclamacion.usuario.Split('&')[1];
-            label_Email.Text = reclamacion.usuario.Split('&')[3];
-            label_Telefono.Text = reclamacion.usuario.Split('&')[2];
-            label_Provincia.Text = reclamacion.direccion.Split('&')[0];
-            label_Localidad.Text = reclamacion.direccion.Split('&')[1];
-            label_CP.Text = reclamacion.direccion.Split('&')[2];
-            label_Domicilio.Text = reclamacion.direccion.Split('&')[3] + "  " + reclamacion.direccion.Split('&')[4] + "  " + reclamacion.direccion.Split('&')[5];
-            label_Mayor14.Text = reclamacion.mayor14 == 1 ? "Si" : "No";
-            label_Info.Text = reclamacion.informacion == 1 ? "Si" : "No";
-            label_Firma.Text = reclamacion.firma == 1 ? "Si" : "No";
+            label_Nombre.Text = reclamacion.nombre; 
+            label_DNI.Text = reclamacion.dni;
+            label_Email.Text = reclamacion.email;
+            label_Telefono.Text = reclamacion.telefono;
+            label_Provincia.Text = reclamacion.provincia;
+            label_Localidad.Text = reclamacion.localidad;
+            label_CP.Text = reclamacion.cp;
+            label_Domicilio.Text = reclamacion.tipoVia + "  " + reclamacion.nombreVia + "  " + reclamacion.numero;
+            label_Mayor14.Text = reclamacion.mayor14;
+            label_Info.Text = reclamacion.informacion;
+            label_Firma.Text = reclamacion.firma;
         }
     }
 }

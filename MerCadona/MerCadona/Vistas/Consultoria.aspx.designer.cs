@@ -10,7 +10,7 @@
 namespace MerCadona.Vistas {
     
     
-    public partial class Consultoria {
+    public partial class consultoria {
         
         /// <summary>
         /// form1 control.
