@@ -9,9 +9,7 @@ namespace MerCadona.Modelos
     {
         public string localidad { get; set; }
         public string direccion { get; set; }
-
         public string cp { get; set; }
-
         public string horario { get; set; }
         public string telefono { get; set; }
         public bool parking { get; set; }        

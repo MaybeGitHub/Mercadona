@@ -177,7 +177,7 @@
             var posicionY = (screen.height / 2) - 250;
             var list = document.getElementById("list_Direcciones");
             if (list.options[list.selectedIndex].value != "No se han definido direcciones de entrega")
-                window.open("altaDomicilio.aspx?direccion=" + list.options[list.selectedIndex].value, "", "width=500px, height=410px, menubar=0, toolbar=0, directories=0, scrollbars=0, resizable=no,left=" + posicionX + ",top=" + posicionY + "");
+                window.open("altaDomicilio.aspx?direccion=" + list.options[list.selectedIndex].text, "", "width=500px, height=410px, menubar=0, toolbar=0, directories=0, scrollbars=0, resizable=no,left=" + posicionX + ",top=" + posicionY + "");
         })
     </script>
 </body>

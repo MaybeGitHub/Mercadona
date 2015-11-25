@@ -66,6 +66,7 @@
     </Content>
     <Content Include="ficheros\Reclamaciones.xml" />
     <Content Include="ficheros\Usuarios.xml" />
+    <Content Include="ficheros\Direcciones.xml" />
     <Content Include="Vistas\altaCliente.aspx" />
     <Content Include="Vistas\altaDomicilio.aspx" />
     <Content Include="Vistas\altaTelefono.aspx" />

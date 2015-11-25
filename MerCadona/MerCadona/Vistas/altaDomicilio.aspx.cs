@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MerCadona.Modelos;
+using MerCadona.Controladores;
 
 namespace MerCadona.Vistas
 {
@@ -11,8 +13,9 @@ namespace MerCadona.Vistas
     {
         private string direccion;
         private string tipoVia, nombreVia, numero, piso, puerta, urba, bloque, escalera, observaciones, localidad, cp, habitual;
-        private string datosCompletos;
         private bool modificar = false;
+        private Direccion dir = new Direccion();
+        private CXml cXml = new CXml();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,19 +35,19 @@ namespace MerCadona.Vistas
 
             if (direccion != null)
             {
-                datosCompletos = Request.Cookies["Direccion"].Values[direccion];
-                text_TipoVia.Text = datosCompletos.Split(';')[0];
-                text_NombreVia.Text = datosCompletos.Split(';')[1];
-                text_Numero.Text = datosCompletos.Split(';')[2];
-                text_Piso.Text = datosCompletos.Split(';')[3];
-                text_Puerta.Text = datosCompletos.Split(';')[4];
-                text_Urba.Text = datosCompletos.Split(';')[5];
-                text_Bloque.Text = datosCompletos.Split(';')[6];
-                text_Escalera.Text = datosCompletos.Split(';')[7];
-                text_Observaciones.Text = datosCompletos.Split(';')[8];
-                text_Localdidad.Text = datosCompletos.Split(';')[9];
-                text_CP.Text = datosCompletos.Split(';')[10];
-                check_Habitual.Checked = datosCompletos.Split(';')[10] == "Si" ? true : false;
+                dir = cXml.fabricarDireccion(Server.MapPath("~/ficheros/Direcciones.xml"), Request.Cookies["Direccion"].Values[direccion]);
+                text_TipoVia.Text = dir.tipoVia;
+                text_NombreVia.Text = dir.nombreVia;
+                text_Numero.Text = dir.numero;
+                text_Piso.Text = dir.piso;
+                text_Puerta.Text = dir.puerta;
+                text_Urba.Text = dir.urba;
+                text_Bloque.Text = dir.bloque;
+                text_Escalera.Text = dir.escalera;
+                text_Observaciones.Text = dir.observaciones;
+                text_Localdidad.Text = dir.localidad;
+                text_CP.Text = dir.cp;
+                check_Habitual.Checked = dir.habitual == "Si" ? true : false;
                 modificar = true;
             }
         }
@@ -53,23 +56,21 @@ namespace MerCadona.Vistas
         {
             if (IsValid)
             {
+                rellenarDireccion();
                 if (Request.Cookies["Direccion"] != null)
-                {
+                {                    
                     if (modificar)
-                    {
-                        Request.Cookies["Direccion"].Values.Remove(direccion);
-                        Request.Cookies["Direccion"].Values.Add(nombreVia + "-" + localidad, camposConcatenados());
-                    }
-                    else
-                    {
-                        Request.Cookies["Telefono"].Values.Add(text_NombreVia.Text + "-" + text_Localdidad.Text, camposConcatenados());
-                    }
+                    {                        
+                        Request.Cookies["Direccion"].Values.Remove(Request.Cookies["Direccion"].Values[direccion]);
+                    }                    
+                    Request.Cookies["Direccion"].Values.Add(dir.nombreVia + "-" + dir.localidad, dir.id);
                     Response.Cookies.Add(Request.Cookies["Direccion"]);
                 }
                 else
                 {
-                    HttpCookie miCookie = new HttpCookie("Direccion");
-                    miCookie.Values.Add(text_NombreVia.Text + "-" + text_Localdidad.Text, camposConcatenados());
+                    cXml.modificarDireccion(Server.MapPath("~/ficheros/Direcciones.xml"), dir, modificar);
+                    HttpCookie miCookie = new HttpCookie("Direccion");                    
+                    miCookie.Values.Add(dir.nombreVia + "-" + dir.localidad, dir.id);
                     miCookie.Expires = DateTime.Now.AddHours(1d);
                     Response.Cookies.Add(miCookie);
                 }
@@ -78,20 +79,20 @@ namespace MerCadona.Vistas
             }
         }
 
-        private string camposConcatenados()
+        private void rellenarDireccion()
         {
-            return text_TipoVia.Text 
-            + ";" + text_NombreVia.Text
-            + ";" + text_Numero.Text
-            + ";" + text_Piso.Text
-            + ";" + text_Puerta.Text
-            + ";" + text_Urba.Text
-            + ";" + text_Bloque.Text
-            + ";" + text_Escalera.Text
-            + ";" + text_Observaciones.Text
-            + ";" + text_Localdidad.Text
-            + ";" + text_CP.Text
-            + ";" + (check_Habitual.Checked ? "Si" : "No");
+            dir.tipoVia = text_TipoVia.Text;
+            dir.nombreVia = text_NombreVia.Text;
+            dir.numero = text_Numero.Text;
+            dir.piso = text_Piso.Text;
+            dir.puerta = text_Puerta.Text;
+            dir.urba = text_Urba.Text;
+            dir.bloque = text_Bloque.Text;
+            dir.escalera = text_Escalera.Text;
+            dir.observaciones = text_Observaciones.Text;
+            dir.localidad = text_Localdidad.Text;
+            dir.cp = text_CP.Text;
+            dir.habitual = check_Habitual.Checked ? "Si" : "No";
         }
 
         protected void button_Cancelar_Click(object sender, EventArgs e)
