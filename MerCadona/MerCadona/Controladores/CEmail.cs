@@ -11,7 +11,7 @@ namespace MerCadona.Controladores
 {
     public class CEmail
     {
-        public void mandarEmail(Usuario usuario, string link)
+        public void mandarEmail(Cliente usuario, string link)
         {
             string url = "http://localhost:2243/Vistas/cambiopwd.aspx?email=" + usuario.email;
             string html = 

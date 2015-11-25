@@ -30,7 +30,7 @@
     <asp:Table runat="server" Width="100%">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:LinkButton runat="server" Text="Registrarse como Cliente" ForeColor="Black"></asp:LinkButton>
+                <asp:LinkButton runat="server" Text="Registrarse como Cliente" ForeColor="Black" PostBackUrl="~/Vistas/altaCliente.aspx"></asp:LinkButton>
             </asp:TableCell>
             <asp:TableCell RowSpan="4">
                 <asp:Table runat="server" BackColor="SandyBrown" HorizontalAlign="Right" Width="600px">
@@ -84,7 +84,7 @@
         var posicionX = (screen.width / 2) - 400;
         var posicionY = (screen.height / 2) - 250;
         document.getElementById("button_Olvidado").addEventListener("click", function () {
-            window.open("popup.aspx", "", "width=800px, height=200px, menubar=0, toolbar=0, directories=0, scrollbars=0, resizable=no,left=" + posicionX + ",top=" + posicionY + "");
+            window.open("cambioContraseña.aspx", "", "width=800px, height=200px, menubar=0, toolbar=0, directories=0, scrollbars=0, resizable=no,left=" + posicionX + ",top=" + posicionY + "");
         })
     </script>  
 </body>

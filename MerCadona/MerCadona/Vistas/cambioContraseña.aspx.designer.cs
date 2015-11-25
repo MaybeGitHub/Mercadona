@@ -10,7 +10,7 @@
 namespace MerCadona.Vistas {
     
     
-    public partial class popup {
+    public partial class cambioContraseña {
         
         /// <summary>
         /// form1 control.

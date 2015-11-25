@@ -52,8 +52,7 @@ namespace MerCadona.Controladores
                     xDoc.Save(path);
                     break;
                 }
-            }
-           
+            }           
         }
 
         public List<Reclamacion> reclamacionesNoLeidas(string path)
@@ -102,7 +101,7 @@ namespace MerCadona.Controladores
 
         public bool comprobarExistenciaNIF(string path, string NIF)
         {
-            Usuario ret = new Usuario();
+            Cliente ret = new Cliente();
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             foreach(XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Usuarios/Usuario"))
@@ -112,16 +111,16 @@ namespace MerCadona.Controladores
             return false;
         }
 
-        public Usuario fabricarUsuario(string path, string NIF)
+        public Cliente fabricarUsuario(string path, string NIF)
         {
-            Usuario usuario = null;
+            Cliente usuario = null;
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Usuarios/Usuario"))
             {
                 if( xNode.SelectSingleNode("NIF").InnerText == NIF )
                 {
-                    usuario = new Usuario();
+                    usuario = new Cliente();
                     usuario.nombre = xNode.SelectSingleNode("Nombre").InnerText;
                     usuario.NIF = xNode.SelectSingleNode("NIF").InnerText;
                     usuario.telefono = xNode.SelectSingleNode("Telefono").InnerText;

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="popup.aspx.cs" Inherits="MerCadona.Vistas.popup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cambioContraseña.aspx.cs" Inherits="MerCadona.Vistas.cambioContraseña" %>
 
 <!DOCTYPE html>
 

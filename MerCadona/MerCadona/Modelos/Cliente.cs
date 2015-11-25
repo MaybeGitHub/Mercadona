@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MerCadona.Modelos
 {
-    public class Usuario
+    public class Cliente
     {
         public string nombre { get; set; }
         public string NIF { get; set; }

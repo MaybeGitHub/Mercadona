@@ -10,7 +10,7 @@ using MerCadona.Modelos;
 
 namespace MerCadona.Vistas
 {
-    public partial class popup : System.Web.UI.Page
+    public partial class cambioContraseña : System.Web.UI.Page
     {
         private CXml cXml = new CXml();
         private CEmail cEmail = new CEmail();
@@ -19,7 +19,7 @@ namespace MerCadona.Vistas
         {
             if (IsValid)
             {                
-                Usuario usuario = cXml.fabricarUsuario(Server.MapPath("~/ficheros/Usuarios.xml"), text_Numero.Text);
+                Cliente usuario = cXml.fabricarUsuario(Server.MapPath("~/ficheros/Usuarios.xml"), text_Numero.Text);
                 string pathLink = Server.MapPath("~/Vistas/cambiopwd.aspx");
                 if (usuario != null)
                 {
@@ -37,7 +37,7 @@ namespace MerCadona.Vistas
 
         protected void buton_Cerrar_Click(object sender, EventArgs e)
         {
-             Response.Write("<script>window.close();</script>");       
+             Response.Write("<script>window.close();</script>");
         }
     }
 }
