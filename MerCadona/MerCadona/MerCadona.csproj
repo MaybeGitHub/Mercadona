@@ -41,6 +41,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spire.License, Version=1.3.5.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.3.5.143\lib\net40\Spire.License.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.5.143.5040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.3.5.143\lib\net40\Spire.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -61,17 +69,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ficheros\Cestas.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ficheros\Empleados.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="ficheros\Reclamaciones.xml" />
-    <Content Include="ficheros\Usuarios.xml" />
+    <Content Include="ficheros\Clientes.xml" />
     <Content Include="ficheros\Direcciones.xml" />
+    <Content Include="imagenes\imagenes_CompraOnline\tarjetas_credito.jpg" />
+    <Content Include="imagenes\imagenes_CompraOnline\tarjeta_mercadona.jpg" />
     <Content Include="Vistas\altaCliente.aspx" />
     <Content Include="Vistas\altaDomicilio.aspx" />
     <Content Include="Vistas\altaTelefono.aspx" />
     <Content Include="Vistas\atencion.aspx" />
     <Content Include="Vistas\cambiopwd.aspx" />
+    <Content Include="Vistas\carrito.aspx" />
     <Content Include="Vistas\consultoria.aspx" />
     <Content Include="Vistas\donde.aspx" />
     <Content Include="ficheros\Supermercados.xml">
@@ -80,6 +94,7 @@
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoFormalizar.png" />
     <Content Include="imagenes\imagenes_CompraOnline\botonCarritoGuardar.png" />
     <Content Include="Vistas\entrada.aspx" />
+    <Content Include="Vistas\formalizar.aspx" />
     <Content Include="Vistas\index.aspx" />
     <Content Include="Master\MasterCompraOnLine.Master" />
     <Content Include="Vistas\loginEmpleados.aspx" />
@@ -90,6 +105,7 @@
     <Content Include="__Controles_Usuario__\controlListaMiniProducto.ascx" />
     <Content Include="ficheros\provincias.csv" />
     <Content Include="Master\MasterEmpresa.Master" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -135,6 +151,7 @@
   <ItemGroup>
     <Compile Include="Controladores\CEmail.cs" />
     <Compile Include="Controladores\CXml.cs" />
+    <Compile Include="Modelos\Cesta.cs" />
     <Compile Include="Modelos\Direccion.cs" />
     <Compile Include="Modelos\Reclamacion.cs" />
     <Compile Include="Modelos\Cliente.cs" />
@@ -173,6 +190,13 @@
     <Compile Include="Vistas\cambiopwd.aspx.designer.cs">
       <DependentUpon>cambiopwd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\carrito.aspx.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\carrito.aspx.designer.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\consultoria.aspx.cs">
       <DependentUpon>consultoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,6 +217,13 @@
     </Compile>
     <Compile Include="Vistas\entrada.aspx.designer.cs">
       <DependentUpon>entrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\formalizar.aspx.cs">
+      <DependentUpon>formalizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\formalizar.aspx.designer.cs">
+      <DependentUpon>formalizar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

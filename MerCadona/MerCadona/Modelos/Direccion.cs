@@ -23,7 +23,7 @@ namespace MerCadona.Modelos
 
         public Direccion()
         {
-            id = new Random(int.MaxValue).Next().ToString();
+            id = new Random().Next(1, int.MaxValue).ToString();
         }
 
         public Direccion(string id)

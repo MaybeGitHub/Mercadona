@@ -19,11 +19,10 @@ namespace MerCadona.Vistas
         {
             if (IsValid)
             {                
-                Cliente usuario = cXml.fabricarUsuario(Server.MapPath("~/ficheros/Usuarios.xml"), text_Numero.Text);
-                string pathLink = Server.MapPath("~/Vistas/cambiopwd.aspx");
+                Cliente usuario = cXml.fabricarCliente(Server.MapPath("~/ficheros/Usuarios.xml"), text_Numero.Text);
                 if (usuario != null)
                 {
-                    Task task = new Task(() => cEmail.mandarEmail(usuario, pathLink));
+                    Task task = new Task(() => cEmail.mandarEmail(usuario, "Recuperar contraseña", null, null));
                     task.Start();
                 }
                 Response.Write("<script>window.close();</script>");

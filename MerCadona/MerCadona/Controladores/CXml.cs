@@ -40,6 +40,199 @@ namespace MerCadona.Controladores
             return ret;
         }
 
+        public void cerrarCesta(string path, string NIF)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("Estado").InnerText == "Abierta" && xNode.SelectSingleNode("Cliente").InnerText == NIF)
+                {
+                    xNode.SelectSingleNode("Estado").InnerText = "Cerrada";
+                    xDoc.Save(path);
+                    break;
+                }
+            }
+        }
+
+        public Cesta fabricarCesta(string path, string NIF)
+        {
+            Cesta cesta = null;
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("Cliente").InnerText == NIF && xNode.SelectSingleNode("Estado").InnerText == "Abierta")
+                {
+                    cesta = new Cesta();
+                    cesta.id = xNode.SelectSingleNode("ID").InnerText;
+                    cesta.cliente = xNode.SelectSingleNode("Cliente").InnerText;
+                    foreach(XmlNode xxNode in xNode.SelectNodes("Producto"))
+                    {
+                        cesta.listaProductos.Add(xxNode.InnerText, xxNode.Attributes["Cantidad"].Value + "/" + xxNode.Attributes["Precio"].Value);
+                    }
+                }
+            }
+            return cesta;
+        }
+
+        public void borrarProducto(string path, string NIF, string posicion)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("Cliente").InnerText == NIF && xNode.SelectSingleNode("Estado").InnerText == "Abierta")
+                {
+                    xNode.RemoveChild(xNode.SelectNodes("Producto")[int.Parse(posicion)]);
+                    break;
+                }
+            }
+            xDoc.Save(path);
+        }
+
+        public void añadirCesta(string path, Cesta cesta)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            XmlNode padre = xDoc.FirstChild;
+            XmlNode hijo = xDoc.CreateNode(XmlNodeType.Element, "Cesta", null);
+
+            XmlNode nuevo = xDoc.CreateNode(XmlNodeType.Element, "Estado", null);
+            nuevo.InnerText = "Abierta";
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "ID", null);
+            nuevo.InnerText = cesta.id;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Cliente", null);
+            nuevo.InnerText = cesta.cliente;
+            hijo.AppendChild(nuevo);
+
+            foreach (string key in cesta.listaProductos.Keys)
+            {
+                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Producto", null);                
+                XmlAttribute attr = xDoc.CreateAttribute("Precio");
+                attr.Value = cesta.listaProductos[key];
+                nuevo.Attributes.Append(attr);
+                attr = xDoc.CreateAttribute("Cantidad");
+                attr.Value = "1";
+                nuevo.Attributes.Append(attr);
+                nuevo.InnerText = key;
+                hijo.AppendChild(nuevo);                
+            }
+
+            padre.AppendChild(hijo);
+
+            xDoc.Save(path);
+        }
+
+        public bool comprobarCestaAbierta(string path, string NIF)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("Cliente").InnerText == NIF && xNode.SelectSingleNode("Estado").InnerText == "Abierta")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void añadirProducto(string pathCesta, string NIF, string pathProducto, string producto, string cuantos)
+        {
+            XmlDocument xDocCesta = new XmlDocument();
+            xDocCesta.Load(pathCesta);
+            XmlDocument xDocProducto = new XmlDocument();
+            xDocProducto.Load(pathProducto);
+
+            string elemento = null;
+            string precio = null;
+            XmlNodeList listaNodos = xDocProducto.DocumentElement.SelectNodes("/Secciones/Seccion/SubSeccion/Producto");
+            XmlNode nodoProducto = listaNodos.Item(int.Parse(producto));
+
+            elemento = nodoProducto.InnerText;
+            precio = nodoProducto.Attributes["Precio"].Value;            
+
+            bool duplicado = false;
+            foreach (XmlNode xNode in xDocCesta.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("Cliente").InnerText == NIF)
+                {                    
+                    foreach(XmlNode xxNode in xNode.SelectNodes("Producto"))
+                    {
+                        if(xxNode.InnerText == elemento)
+                        {
+                            if ((int.Parse(xxNode.Attributes["Cantidad"].Value) + int.Parse(cuantos)) > 0)
+                            {
+                                xxNode.Attributes["Cantidad"].Value = (int.Parse(xxNode.Attributes["Cantidad"].Value) + int.Parse(cuantos)).ToString();
+                            }
+                            
+                            duplicado = true;
+                            break;
+                        }
+                    }
+
+                    if (!duplicado)
+                    {
+                        XmlNode nuevo = xDocCesta.CreateNode(XmlNodeType.Element, "Producto", null);
+                        nuevo.InnerText = elemento;
+                        XmlAttribute attr = xDocCesta.CreateAttribute("Precio");
+                        attr.Value = precio;
+                        nuevo.Attributes.Append(attr);
+                        attr = xDocCesta.CreateAttribute("Cantidad");
+                        attr.Value = "1";
+                        nuevo.Attributes.Append(attr);
+                        xNode.AppendChild(nuevo);
+                        break;
+                    }
+                }                
+            }
+
+            xDocCesta.Save(pathCesta);
+        }
+
+        public Dictionary<string, string> lecturaXMLProductos(string path, string categoria)
+        {
+            Dictionary<string, string> listaProductos = new Dictionary<string, string>();
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach(XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Secciones/Seccion/SubSeccion"))
+            {
+                if(xNode.Attributes["Nombre"].Value == categoria)
+                {
+                    foreach(XmlNode xxNode in xNode.SelectNodes("Producto"))
+                    {
+                        listaProductos.Add(xxNode.InnerText, xxNode.Attributes["Precio"].Value);
+                    }
+                }
+            }
+            return listaProductos;
+        }
+
+        public void crearTreeProductos(string path, TreeView tree_Productos)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            TreeNode hoja;
+            XmlNode xNode, xxNode;
+            for (int i = 0; i < xDoc.DocumentElement.SelectNodes("Seccion").Count; i++)
+            {
+                xNode = xDoc.DocumentElement.SelectNodes("Seccion")[i];
+                hoja = new TreeNode(xNode.Attributes["Nombre"].Value, xNode.Attributes["Nombre"].Value);
+                tree_Productos.Nodes.Add(hoja);
+                for (int j = 0; j < xNode.SelectNodes("SubSeccion").Count; j++ )
+                {
+                    xxNode = xNode.SelectNodes("SubSeccion")[j];
+                    hoja = new TreeNode(xxNode.Attributes["Nombre"].Value, xxNode.Attributes["Nombre"].Value);
+                    tree_Productos.Nodes[i].ChildNodes.Add(hoja);
+                }              
+            }
+        }
+
         public Direccion fabricarDireccion(string path, string id)
         {
             Direccion direccion = new Direccion(id);
@@ -75,10 +268,11 @@ namespace MerCadona.Controladores
             {
                 if (xNode.SelectSingleNode("ID").InnerText == id)
                 {
-                    xDoc.FirstChild.RemoveChild(xNode);
+                    xDoc.DocumentElement.RemoveChild(xNode);
                     break;
                 }
             }
+            xDoc.Save(path);
         }
 
         public void modificarDireccion(string path, Direccion dir, bool modificar)
@@ -246,24 +440,119 @@ namespace MerCadona.Controladores
             return false;
         }
 
-        public Cliente fabricarUsuario(string path, string NIF)
+        public Cliente fabricarCliente(string path, string NIF)
         {
-            Cliente usuario = null;
+            Cliente cliente = null;
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
-            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Usuarios/Usuario"))
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
             {
                 if( xNode.SelectSingleNode("NIF").InnerText == NIF )
                 {
-                    usuario = new Cliente();
-                    usuario.nombre = xNode.SelectSingleNode("Nombre").InnerText;
-                    usuario.NIF = xNode.SelectSingleNode("NIF").InnerText;
-                    usuario.telefono = xNode.SelectSingleNode("Telefono").InnerText;
-                    usuario.email = xNode.SelectSingleNode("Email").InnerText;
+                    cliente = new Cliente();                    
+                    cliente.nombre = xNode.SelectSingleNode("Nombre").InnerText;
+                    cliente.apellido = xNode.SelectSingleNode("Apellido").InnerText;
+                    cliente.apellido2 = xNode.SelectSingleNode("Apellido2").InnerText;
+                    cliente.tipoIdentificacion = xNode.SelectSingleNode("TipoID").InnerText;
+                    cliente.NIF = xNode.SelectSingleNode("NIF").InnerText;
+                    cliente.email = xNode.SelectSingleNode("Email").InnerText;
+                    cliente.contraseña = xNode.SelectSingleNode("Contraseña").InnerText;
+                    for(int i = 0; i < xNode.SelectNodes("Direccion").Count; i++) cliente.listaIdDirecciones.Add(xNode.SelectNodes("Direccion")[i].InnerText, xNode.SelectNodes("Direccion")[i].Attributes["ID"].Value);
+                    for(int i = 0; i < xNode.SelectNodes("Telefono").Count; i++) cliente.listaTelefonos.Add(xNode.SelectNodes("Telefono")[i].InnerText);
+                    cliente.faltaProducto = xNode.SelectSingleNode("FaltaProducto").InnerText;
+                    cliente.info = xNode.SelectSingleNode("Info").InnerText;
+                    cliente.dia = xNode.SelectSingleNode("Dia").InnerText;
+                    cliente.mes = xNode.SelectSingleNode("Mes").InnerText;
+                    cliente.año = xNode.SelectSingleNode("Año").InnerText;
                     break;
                 }
             }
-            return usuario;
+            return cliente;
+        }
+
+        public void añadirCliente(string path, Cliente cliente)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            XmlNode padre = xDoc.FirstChild;
+            XmlNode hijo = xDoc.CreateNode(XmlNodeType.Element, "Cliente", null);
+
+            XmlNode nuevo = xDoc.CreateNode(XmlNodeType.Element, "Nombre", null);
+            nuevo.InnerText = cliente.nombre;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Apellido", null);
+            nuevo.InnerText = cliente.apellido;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Apellido2", null);
+            nuevo.InnerText = cliente.apellido2;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "TipoID", null);
+            nuevo.InnerText = cliente.tipoIdentificacion;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "NIF", null);
+            nuevo.InnerText = cliente.NIF;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Email", null);
+            nuevo.InnerText = cliente.email;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Contraseña", null);
+            nuevo.InnerText = cliente.contraseña;
+            hijo.AppendChild(nuevo);
+
+            int cont = 1;
+            foreach(string key in cliente.listaIdDirecciones.Keys)
+            {
+                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Direccion", null);
+                XmlAttribute attr = xDoc.CreateAttribute("Numero");
+                attr.Value = cont.ToString();
+                nuevo.Attributes.Append(attr);
+                attr = xDoc.CreateAttribute("ID");
+                attr.Value = cliente.listaIdDirecciones[key];
+                nuevo.Attributes.Append(attr);
+                nuevo.InnerText = key;
+                hijo.AppendChild(nuevo);
+                cont++;
+            }
+
+            for (int i = 0; i < cliente.listaTelefonos.Count; i++)
+            {
+                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Telefono", null);
+                XmlAttribute attr = xDoc.CreateAttribute("Numero");
+                attr.Value = (i+1).ToString();
+                nuevo.Attributes.Append(attr);
+                nuevo.InnerText = cliente.listaTelefonos[i];
+                hijo.AppendChild(nuevo);
+            }
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "FaltaProducto", null);
+            nuevo.InnerText = cliente.faltaProducto;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Info", null);
+            nuevo.InnerText = cliente.info;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Dia", null);
+            nuevo.InnerText = cliente.dia;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Mes", null);
+            nuevo.InnerText = cliente.mes;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Año", null);
+            nuevo.InnerText = cliente.año;
+            hijo.AppendChild(nuevo);
+
+            hijo.AppendChild(nuevo); padre.AppendChild(hijo);
+
+            xDoc.Save(path);
         }
 
         public void añadirReclamacion(string path, Reclamacion reclamacion)

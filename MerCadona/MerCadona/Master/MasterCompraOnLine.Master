@@ -132,7 +132,7 @@
                         <div style="border-bottom: thick hidden #FFCC00; height: 20px; color: #FFFFFF; font-weight: bold; text-align: center; font-size: medium; border-left-color: #FFCC00; border-right-color: #FFCC00; border-top-color: #FFCC00; visibility: visible; border-bottom-style: solid;">
                             SECCIONES</div>
                              <div>
-                                 <asp:TreeView ID="TreeView1" runat="server" Height="164px" Width="175px" 
+                                 <asp:TreeView ID="tree_Productos" runat="server" Height="164px" Width="175px" 
                                      Font-Bold="True" ForeColor="White" ImageSet="Arrows" Font-Size="X-Small" 
                                      Font-Strikeout="False" Font-Underline="False" NodeWrap="True" 
                                      style="margin-right: 0px" ExpandDepth="1">
@@ -140,31 +140,15 @@
                                      <HoverNodeStyle Font-Underline="True" ForeColor="Black" BorderColor="#CC0000" />
                                      <SelectedNodeStyle Font-Underline="True" ForeColor="#FFFF66" 
                                          HorizontalPadding="0px" VerticalPadding="0px" />
-                                     <Nodes>
-                                         <asp:TreeNode Text="SECCION-1" Value="SECCION-1">
-                                             <asp:TreeNode Text="SUB-Seccion-1.1" Value="SUB-Seccion-1.1"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-1.2" Value="SUB-Seccion-1.2"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-1.3" Value="SUB-Seccion-1.3"></asp:TreeNode>
-                                         </asp:TreeNode>
-                                         <asp:TreeNode Text="SECCION-2" Value="SECCION-2">
-                                             <asp:TreeNode Text="SUB-Seccion-2.1" Value="SUB-Seccion-2.1"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-2.2" Value="SUB-Seccion-2.2"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-2.3" Value="SUB-Seccion-2.3"></asp:TreeNode>
-                                         </asp:TreeNode>
-                                         <asp:TreeNode Text="SECCION-3" Value="SECCION-3">
-                                             <asp:TreeNode Text="SUB-Seccion-3.1" Value="SUB-Seccion-3.1"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-3.2" Value="SUB-Seccion-3.2"></asp:TreeNode>
-                                             <asp:TreeNode Text="SUB-Seccion-3.3" Value="SUB-Seccion-3.3"></asp:TreeNode>
-                                         </asp:TreeNode>
+                                     <Nodes>                                         
                                      </Nodes>
                                      <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="White" 
                                          HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
                                  </asp:TreeView>
-                                    </div>       
-                        </div>
-                        
-                            </div>
-                        </div>
+                            </div>       
+                        </div>                        
+                     </div>
+                 </div>
             </td>
             <td class="style5">
                 <table style="width: 100%; height: 690px;">
@@ -204,9 +188,19 @@
                             <div style="background-color:#FFCC00;color:black;position:relative;float:left;width:200px;border:3px solid black;margin-left:-10px">
                                 <span style="color:black;font-size:15px">Ticket actual</span><br />
                                 <hr />
-                                <span style="font-size:90px"> ....aqui control usuario carrito....</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <br />
-
+                                <asp:Table runat="server" ID="tabla_Cesta" Width="100%">
+                                    <asp:TableRow>
+                                        <asp:TableCell Width="50%">
+                                            Descripcion
+                                        </asp:TableCell>
+                                        <asp:TableCell HorizontalAlign="Center" Width="20%">
+                                            Cantidad
+                                        </asp:TableCell>
+                                        <asp:TableCell HorizontalAlign="Center" Width="20%">
+                                            Euros
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
                             </div>
                             </div>
                         <asp:Image ID="Image3" runat="server" ImageUrl="~/imagenes/imagenes_CompraOnline/recomendacionBajoCarrito.png" Width="161px" />

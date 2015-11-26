@@ -11,7 +11,18 @@ namespace MerCadona.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (IsPostBack)
+            {
+                foreach (string key in Request.Params)
+                {
+                    if (key.Contains("button_Entrar"))
+                    {
+                        HttpCookie miCookie = new HttpCookie("Cliente", text_NIF.Text);
+                        miCookie.Expires = DateTime.Now.AddDays(1d);
+                        Response.Cookies.Add(miCookie);
+                    }
+                }
+            }
         }
     }
 }

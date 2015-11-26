@@ -130,13 +130,13 @@ namespace MerCadona.Master {
         protected global::System.Web.UI.WebControls.ImageButton ImageButtonBuscar;
         
         /// <summary>
-        /// TreeView1 control.
+        /// tree_Productos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TreeView1;
+        protected global::System.Web.UI.WebControls.TreeView tree_Productos;
         
         /// <summary>
         /// LabelDireccion control.
@@ -164,6 +164,15 @@ namespace MerCadona.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image2;
+        
+        /// <summary>
+        /// tabla_Cesta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tabla_Cesta;
         
         /// <summary>
         /// Image3 control.

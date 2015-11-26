@@ -10,51 +10,42 @@
 namespace MerCadona.Vistas {
     
     
-    public partial class entrada {
+    public partial class carrito {
         
         /// <summary>
-        /// form1 control.
+        /// label_Categoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label label_Categoria;
         
         /// <summary>
-        /// text_NIF control.
+        /// label_CantidadCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_NIF;
+        protected global::System.Web.UI.WebControls.Label label_CantidadCategoria;
         
         /// <summary>
-        /// text_Contraseña control.
+        /// tabla_Productos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox text_Contraseña;
+        protected global::System.Web.UI.WebControls.Table tabla_Productos;
         
         /// <summary>
-        /// button_Entrar control.
+        /// info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Entrar;
-        
-        /// <summary>
-        /// button_Olvidado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Olvidado;
+        protected global::System.Web.UI.WebControls.TextBox info;
     }
 }

@@ -1,25 +1,47 @@
 <Direcciones>
   <Direccion>
-    <ID>1559595546</ID>
-    <TipoVia>fhj</TipoVia>
-    <NombreVia>fhj</NombreVia>
-    <Numero>
-    </Numero>
-    <Piso>
-    </Piso>
-    <Puerta>
-    </Puerta>
-    <Urba>
-    </Urba>
-    <Bloque>
-    </Bloque>
-    <Escalera>
-    </Escalera>
-    <Observaciones>
-    </Observaciones>
-    <Localidad>fj</Localidad>
-    <CP>
-    </CP>
+    <ID>1124357625</ID>
+    <TipoVia>fdg</TipoVia>
+    <NombreVia>dfg</NombreVia>
+    <Numero>dfg</Numero>
+    <Piso>dfg</Piso>
+    <Puerta>dfg</Puerta>
+    <Urba>dfg</Urba>
+    <Bloque>fdg</Bloque>
+    <Escalera>dfg</Escalera>
+    <Observaciones>dfg</Observaciones>
+    <Localidad>dfg</Localidad>
+    <CP>dfg</CP>
     <Habitual>No</Habitual>
+  </Direccion>
+  <Direccion>
+    <ID>1197284311</ID>
+    <TipoVia>asd</TipoVia>
+    <NombreVia>asd</NombreVia>
+    <Numero>asd</Numero>
+    <Piso>asd</Piso>
+    <Puerta>asd</Puerta>
+    <Urba>asd</Urba>
+    <Bloque>asd</Bloque>
+    <Escalera>asd</Escalera>
+    <Observaciones>asd</Observaciones>
+    <Localidad>asd</Localidad>
+    <CP>asd</CP>
+    <Habitual>Si</Habitual>
+  </Direccion>
+  <Direccion>
+    <ID>1703739566</ID>
+    <TipoVia>qwe</TipoVia>
+    <NombreVia>qwe</NombreVia>
+    <Numero>qwe</Numero>
+    <Piso>qwe</Piso>
+    <Puerta>qwe</Puerta>
+    <Urba>qwe</Urba>
+    <Bloque>qwe</Bloque>
+    <Escalera>qwe</Escalera>
+    <Observaciones>qwe</Observaciones>
+    <Localidad>qwe</Localidad>
+    <CP>qwe</CP>
+    <Habitual>Si</Habitual>
   </Direccion>
 </Direcciones>

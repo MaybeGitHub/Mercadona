@@ -39,7 +39,7 @@
                              <asp:Label runat="server" Text="E-mail / Usuario de acceso"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell HorizontalAlign="Left">
-                             <asp:TextBox runat="server" ID="text_Usuario" Width="90%"></asp:TextBox>
+                             <asp:TextBox runat="server" ID="text_NIF" Width="90%"></asp:TextBox>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -52,7 +52,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
-                            <asp:Button runat="server" ID="button_Entrar" BackColor="White" ForeColor="DarkGreen" BorderColor="DarkGreen" BorderWidth="1px" Text="ENTRAR"/>
+                            <asp:Button runat="server" ID="button_Entrar" BackColor="White" ForeColor="DarkGreen" BorderColor="DarkGreen" BorderWidth="1px" Text="ENTRAR" PostBackUrl="carrito.aspx"/>
                         </asp:TableCell>                        
                     </asp:TableRow>
                     <asp:TableRow>
