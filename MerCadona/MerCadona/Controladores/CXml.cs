@@ -10,7 +10,7 @@ namespace MerCadona.Controladores
 {
     public class CXml
     {
-        public List<Supermercado> lecturaXMLSupermercados(string provincia, string path)
+        public List<Supermercado> lecturaXMLSupermercados(string path, string provincia)
         {
             List<Supermercado> ret = new List<Supermercado>();
             XmlDocument xDoc = new XmlDocument();
@@ -40,14 +40,170 @@ namespace MerCadona.Controladores
             return ret;
         }
 
-        public void cerrarCesta(string path, string NIF)
+        public Cesta fabricarCestaID(string path, string idCesta)
+        {       
+            Cesta cesta = null;
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if (xNode.SelectSingleNode("ID").InnerText == idCesta)
+                {
+                    cesta = new Cesta();
+                    cesta.estado = xNode.SelectSingleNode("Estado").InnerText;
+                    cesta.id = xNode.SelectSingleNode("ID").InnerText;
+                    cesta.cliente = xNode.SelectSingleNode("Cliente").InnerText;
+                    cesta.direccion = xNode.SelectSingleNode("Direccion").InnerText;
+                    cesta.telefono = xNode.SelectSingleNode("Telefono").InnerText;
+                    foreach (XmlNode xxNode in xNode.SelectNodes("Producto"))
+                    {
+                        cesta.listaProductos.Add(xxNode.InnerText, xxNode.Attributes["Cantidad"].Value + "/" + xxNode.Attributes["Precio"].Value);
+                    }
+                }
+            }
+            return cesta;
+        }
+    
+
+        public List<Cesta> lecturaXMLCestas(string path, string NIF)
+        {
+            List<Cesta> lista = new List<Cesta>();
+            Cesta cesta;
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);            
+
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
+            {
+                if(xNode.SelectSingleNode("Cliente").InnerText == NIF)
+                {
+                    cesta = new Cesta();
+                    cesta.cliente = xNode.SelectSingleNode("Cliente").InnerText;
+                    cesta.direccion = xNode.SelectSingleNode("Direccion").InnerText;
+                    cesta.estado = xNode.SelectSingleNode("Estado").InnerText;
+                    cesta.id = xNode.SelectSingleNode("ID").InnerText;
+                    cesta.telefono = xNode.SelectSingleNode("Telefono").InnerText;
+                    if (xNode.SelectNodes("Producto").Count > 0)
+                    {
+                        foreach (XmlNode xxNode in xNode.SelectNodes("Producto"))
+                        {
+                            cesta.listaProductos.Add(xxNode.InnerText, xxNode.Attributes["Precio"].Value);
+                        }
+                    }
+                    lista.Add(cesta);                    
+                }
+            }            
+            return lista;
+        }
+
+        public bool comprobarCliente(string path, string NIF, string contraseña)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
+            {
+                if (xNode.SelectSingleNode("NIF").InnerText == NIF && xNode.SelectSingleNode("Contraseña").InnerText == contraseña)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool comprobarDatos(string path, string nombre, string NIF, string departamento)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Empleados/Empleado"))
+            {
+                if (xNode.SelectSingleNode("Nombre").InnerText == nombre && xNode.SelectSingleNode("NIF").InnerText == NIF && xNode.SelectSingleNode("Departamento").InnerText == departamento)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void lecturaXMLPuestos(string path, DropDownList list_Tipos)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            List<string> lista = new List<string>();
+
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Empleados/Empleado/Departamento"))
+            {
+                lista.Add(xNode.InnerText);
+            }
+
+            lista = lista.Distinct().ToList();
+
+            foreach (string dato in lista) list_Tipos.Items.Add(new ListItem(dato));
+        }
+
+        public void lecturaXMLDatos(string path, DropDownList list_TipoID, string dato)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+
+            string ruta = dato == "Calle" ? "/Datos/TipoCalle/Calle" : "/Datos/TipoID/ID";
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes(ruta))
+            {
+                list_TipoID.Items.Add(new ListItem(xNode.InnerText));
+            }
+        }
+
+        public void modificarTelefono(string path, string telefonoAntiguo, string telefonoNuevo, bool modificar)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
+            {
+                if (xNode.SelectNodes("Telefono") != null)
+                {
+                    foreach (XmlNode xxNode in xNode.SelectNodes("Telefono"))
+                    {
+                        if (xxNode.InnerText == telefonoAntiguo)
+                        {
+                            xxNode.InnerText = telefonoNuevo;
+                            break;
+                        }
+                    }
+                }
+            }
+            xDoc.Save(path);
+        }
+
+        public void modificarCliente(string path, Cliente cliente)
+        {
+            borrarCliente(path, cliente);           
+            añadirCliente(path, cliente);
+        }
+
+        private void borrarCliente(string path, Cliente cliente)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
+            {
+                if (xNode.SelectSingleNode("NIF").InnerText == cliente.NIF )
+                {
+                    xDoc.DocumentElement.RemoveChild(xNode);
+                    break;
+                }
+            }
+            xDoc.Save(path);
+        }
+
+        public void cerrarCesta(string path, Cesta cesta)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Cestas/Cesta"))
             {
-                if (xNode.SelectSingleNode("Estado").InnerText == "Abierta" && xNode.SelectSingleNode("Cliente").InnerText == NIF)
+                if (xNode.SelectSingleNode("Estado").InnerText == "Abierta" && xNode.SelectSingleNode("Cliente").InnerText == cesta.cliente)
                 {
+                    xNode.SelectSingleNode("Direccion").InnerText = cesta.direccion;
+                    xNode.SelectSingleNode("Telefono").InnerText = cesta.telefono;
                     xNode.SelectSingleNode("Estado").InnerText = "Cerrada";
                     xDoc.Save(path);
                     break;
@@ -99,7 +255,7 @@ namespace MerCadona.Controladores
             XmlNode hijo = xDoc.CreateNode(XmlNodeType.Element, "Cesta", null);
 
             XmlNode nuevo = xDoc.CreateNode(XmlNodeType.Element, "Estado", null);
-            nuevo.InnerText = "Abierta";
+            nuevo.InnerText = cesta.estado;
             hijo.AppendChild(nuevo);
 
             nuevo = xDoc.CreateNode(XmlNodeType.Element, "ID", null);
@@ -122,6 +278,14 @@ namespace MerCadona.Controladores
                 nuevo.InnerText = key;
                 hijo.AppendChild(nuevo);                
             }
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Direccion", null);
+            nuevo.InnerText = cesta.direccion;
+            hijo.AppendChild(nuevo);
+
+            nuevo = xDoc.CreateNode(XmlNodeType.Element, "Telefono", null);
+            nuevo.InnerText = cesta.direccion;
+            hijo.AppendChild(nuevo);
 
             padre.AppendChild(hijo);
 
@@ -233,14 +397,14 @@ namespace MerCadona.Controladores
             }
         }
 
-        public Direccion fabricarDireccion(string path, string id)
+        public Direccion fabricarDireccion(string path, string idDireccion)
         {
-            Direccion direccion = new Direccion(id);
+            Direccion direccion = new Direccion(idDireccion);
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Direcciones/Direccion"))
             {
-                if (xNode.SelectSingleNode("ID").InnerText == id )
+                if (xNode.SelectSingleNode("ID").InnerText == idDireccion)
                 {
                     direccion.tipoVia = xNode.SelectSingleNode("TipoVia").InnerText;
                     direccion.nombreVia = xNode.SelectSingleNode("NombreVia").InnerText;
@@ -260,10 +424,10 @@ namespace MerCadona.Controladores
             return direccion;
         }
 
-        public void borrarDireccion(string path, string id)
+        public void borrarDireccion(string pathDireccion, string id)
         {
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(path);
+            xDoc.Load(pathDireccion);
             foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Direcciones/Direccion"))
             {
                 if (xNode.SelectSingleNode("ID").InnerText == id)
@@ -272,15 +436,15 @@ namespace MerCadona.Controladores
                     break;
                 }
             }
-            xDoc.Save(path);
+            xDoc.Save(pathDireccion);
         }
 
-        public void modificarDireccion(string path, Direccion dir, bool modificar)
+        public void modificarDireccion(string pathDireccion, string pathCliente, Direccion dir, bool modificar)
         {
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(path);
+            XmlDocument xDoc = new XmlDocument();            
             if (modificar)
             {
+                xDoc.Load(pathDireccion);
                 foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Direcciones/Direccion"))
                 {
                     if (xNode.SelectSingleNode("ID").InnerText == dir.id)
@@ -297,15 +461,32 @@ namespace MerCadona.Controladores
                         xNode.SelectSingleNode("Localidad").InnerText = dir.localidad;
                         xNode.SelectSingleNode("CP").InnerText = dir.cp;
                         xNode.SelectSingleNode("Habitual").InnerText = dir.habitual;
-                        xDoc.Save(path);
+                        xDoc.Save(pathDireccion);
                         break;
                     }
                 }
+
+                xDoc.Load(pathCliente);
+                foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
+                {                    
+                    if (xNode.SelectNodes("Direccion") != null )
+                    {
+                        foreach(XmlNode xxNode in xNode.SelectNodes("Direccion"))
+                        {
+                            if(xxNode.Attributes["ID"].Value == dir.id)
+                            {
+                                xxNode.InnerText = dir.nombreVia + "-" + dir.localidad;
+                                break;
+                            }
+                        }                                           
+                    }                   
+                }
+                xDoc.Save(pathCliente);
             }
-            else añadirDireccion(path, dir);                      
+            else añadirDireccion(pathDireccion, dir);                      
         }
 
-        private void añadirDireccion(string path, Direccion dir)
+        public void añadirDireccion(string path, Direccion dir)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
@@ -420,7 +601,7 @@ namespace MerCadona.Controladores
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
-            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Usuarios/Usuario"))
+            foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
             {
                 if( xNode.SelectSingleNode("Email").InnerText == email) xNode.SelectSingleNode("Contraseña").InnerText = nuevaContraseña;
                 xDoc.Save(path);
@@ -429,11 +610,10 @@ namespace MerCadona.Controladores
         }
 
         public bool comprobarExistenciaNIF(string path, string NIF)
-        {
-            Cliente ret = new Cliente();
+        {            
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
-            foreach(XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Usuarios/Usuario"))
+            foreach(XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
             {
                return xNode.SelectSingleNode("NIF").InnerText == NIF ? true : false;
             }
@@ -449,7 +629,7 @@ namespace MerCadona.Controladores
             {
                 if( xNode.SelectSingleNode("NIF").InnerText == NIF )
                 {
-                    cliente = new Cliente();                    
+                    cliente = new Cliente();
                     cliente.nombre = xNode.SelectSingleNode("Nombre").InnerText;
                     cliente.apellido = xNode.SelectSingleNode("Apellido").InnerText;
                     cliente.apellido2 = xNode.SelectSingleNode("Apellido2").InnerText;
@@ -470,7 +650,7 @@ namespace MerCadona.Controladores
             return cliente;
         }
 
-        public void añadirCliente(string path, Cliente cliente)
+        private void añadirCliente(string path, Cliente cliente)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
@@ -508,11 +688,8 @@ namespace MerCadona.Controladores
             int cont = 1;
             foreach(string key in cliente.listaIdDirecciones.Keys)
             {
-                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Direccion", null);
-                XmlAttribute attr = xDoc.CreateAttribute("Numero");
-                attr.Value = cont.ToString();
-                nuevo.Attributes.Append(attr);
-                attr = xDoc.CreateAttribute("ID");
+                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Direccion", null);               
+                XmlAttribute attr = xDoc.CreateAttribute("ID");
                 attr.Value = cliente.listaIdDirecciones[key];
                 nuevo.Attributes.Append(attr);
                 nuevo.InnerText = key;
@@ -522,10 +699,7 @@ namespace MerCadona.Controladores
 
             for (int i = 0; i < cliente.listaTelefonos.Count; i++)
             {
-                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Telefono", null);
-                XmlAttribute attr = xDoc.CreateAttribute("Numero");
-                attr.Value = (i+1).ToString();
-                nuevo.Attributes.Append(attr);
+                nuevo = xDoc.CreateNode(XmlNodeType.Element, "Telefono", null);                
                 nuevo.InnerText = cliente.listaTelefonos[i];
                 hijo.AppendChild(nuevo);
             }

@@ -22,7 +22,7 @@ namespace MerCadona.Controladores
 
             if (tipo == "Recuperar contraseña")
             {
-                url = "http://localhost:2243/Vistas/cambiopwd.aspx?email=" + cliente.email;
+                url = "http://localhost:2243/Vistas/Popups/cambiopwd.aspx?email=" + cliente.email;
                 html =
                     "<html>"
                       + "<body>"
@@ -44,7 +44,7 @@ namespace MerCadona.Controladores
                       + "<p>Estimado " + cliente.nombre + " " + cliente.apellido + " " + cliente.apellido2 + "</p>"
                       + "<p>Gracias por hacer su pedido en nuestra tienda Online.</p>"
                       + "<p>Le adjuntamos un pdf con el recibo de su compra, no dude en ponerse en contacto con nosotros si tiene algun problema o si hay algun dato erroneo al telefono: 900 500 103 o</p>"
-                      + "<p>a nuestro departamento de <a href='~/Vistas/atencion.aspx'>Atencion al cliente</a> donde podra aprovechar tambien para darnos su opinion si lo desea y nuestros tecnicos la valoraran lo antes posible pudiendose llegar a poner en contacto con usted si asi lo desea.</p>"
+                      + "<p>a nuestro departamento de <a href='~/Vistas/Empresa/atencion.aspx'>Atencion al cliente</a> donde podra aprovechar tambien para darnos su opinion si lo desea y nuestros tecnicos la valoraran lo antes posible pudiendose llegar a poner en contacto con usted si asi lo desea.</p>"
                       + "<br><p>Muchas gracias por confiar en nosotros.</p> <br><br>Atentamente, equipo de post-venta de Mercadona";
 
                 subject = "Mercadona - Recibo de compra de carrito con ID: " + cesta.id;
@@ -87,7 +87,7 @@ namespace MerCadona.Controladores
                         "Estimado " + cliente.nombre + " " + cliente.apellido + " " + cliente.apellido2
                       + "\n\nGracias por hacer su pedido en nuestra tienda Online"
                       + "\nNo dude en ponerse en contacto con nosotros si tiene algun problema o si hay algun dato erroneo al telefono: 900 500 103 o"
-                      + "\na nuestro departamento de <a href='~/Vistas/atencion.aspx'>Atencion al cliente</a> donde podra aprovechar tambien para darnos su opinion si lo desea y nuestros tecnicos la valoraran lo antes posible pudiendose llegar a poner en contacto con usted si asi lo desea."
+                      + "\na nuestro departamento de <a href='~/Vistas/Empresa/atencion.aspx'>Atencion al cliente</a> donde podra aprovechar tambien para darnos su opinion si lo desea y nuestros tecnicos la valoraran lo antes posible pudiendose llegar a poner en contacto con usted si asi lo desea."
                       + "\nLos datos de su pedido son:"
                       + "\nCESTA"
                       + "\n  ID: " + cesta.id
@@ -100,12 +100,12 @@ namespace MerCadona.Controladores
                         "\n\nCLIENTE"
                       + "\n  Nombre: " + cliente.nombre + " " + cliente.apellido + " " + cliente.apellido2
                       + "\n  NIF: " + cliente.NIF
-                      + "\n  Telefonos: \n";
-                foreach (string telefono in cliente.listaTelefonos) salida += "    " + telefono + "\n";
-                salida += "\n  Direcciones: \n";
-                foreach (string direccion in cliente.listaIdDirecciones.Values) salida += "    " + direccion + "\n";
-                salida += "\nSu pedido saldra cuanto antes de nuestros almacenes."
-                    + "\n\nMuchas gracias por confiar en nosotros. \n\n\nAtentamente, equipo de post-venta de Mercadona";
+                      + "\n  Telefonos: \n"
+                      + "\n    " + cesta.telefono
+                      + "\n  Direccion: \n"
+                      + "\n    " + cesta.direccion                
+                      + "\nSu pedido saldra cuanto antes de nuestros almacenes."
+                      + "\n\nMuchas gracias por confiar en nosotros. \n\n\nAtentamente, equipo de post-venta de Mercadona";
                 
                 pagina.Canvas.DrawString(salida, new PdfFont(PdfFontFamily.TimesRoman, 14), new PdfSolidBrush(Color.Black), 10, 10);
                 

@@ -35,4 +35,22 @@
     <Firma>Si</Firma>
     <Mensaje>el puto xmlel puto xmlel puto xmlel puto xml</Mensaje>
   </Reclamacion>
+  <Reclamacion>
+    <Leido>Si</Leido>
+    <Asunto>Sugerencia</Asunto>
+    <Nombre>qwe qwe qwe</Nombre>
+    <DNI>qwe</DNI>
+    <Telefono>qwe</Telefono>
+    <Email>qwe</Email>
+    <Provincia>qwe</Provincia>
+    <Localidad>eqweqwe</Localidad>
+    <CP>qwe</CP>
+    <TipoVia>qwe</TipoVia>
+    <NombreVia>qwe</NombreVia>
+    <Numero>qwe</Numero>
+    <Mayor14>Si</Mayor14>
+    <Informacion>Si</Informacion>
+    <Firma>Si</Firma>
+    <Mensaje>asd</Mensaje>
+  </Reclamacion>
 </Reclamaciones>

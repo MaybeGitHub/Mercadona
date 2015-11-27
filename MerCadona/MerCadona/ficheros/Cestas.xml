@@ -1,14 +1,19 @@
 <Cestas>
   <Cesta>
     <Estado>Cerrada</Estado>
-    <ID>1772416717</ID>
-    <Cliente>09030912</Cliente>
-    <Producto Precio="1,49" Cantidad="1">LIMON, , MALLA 1 KG</Producto>
-    <Producto Precio="0,36" Cantidad="1">LIMA ( VENTA POR UNIDADES ), , (PESO APROXIMADO DE LA UNIDAD 100 GR)</Producto>
+    <ID>1434586147</ID>
+    <Cliente>09030912P</Cliente>
+    <Direccion>1085746750</Direccion>
+    <Telefono>918884108</Telefono>
+    <Producto Precio="0,29" Cantidad="2">LIMON ( VENTA POR UNIDADES), , (PESO APROXIMADO DE LA UNIDAD 180 GR)</Producto>
   </Cesta>
   <Cesta>
     <Estado>Abierta</Estado>
-    <ID>1534478866</ID>
-    <Cliente>09030912</Cliente>
+    <ID>1356865654</ID>
+    <Cliente>09030912P</Cliente>
+    <Direccion>
+    </Direccion>
+    <Telefono>
+    </Telefono>
   </Cesta>
 </Cestas>

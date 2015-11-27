@@ -1,34 +1,18 @@
 <Clientes>
   <Cliente>
-    <Nombre>qwe</Nombre>
-    <Apellido>qwe</Apellido>
-    <Apellido2>qwe</Apellido2>
-    <TipoID>qwe</TipoID>
-    <NIF>wqe</NIF>
-    <Email>eqwewq</Email>
-    <Contraseña>qwe</Contraseña>
-    <Direccion Numero="1" ID="1703739566">qwe-qwe</Direccion>
-    <Telefono Numero="1">qweqwewqeqweq</Telefono>
-    <FaltaProducto>No servir</FaltaProducto>
-    <Info>Si</Info>
-    <Dia>1</Dia>
-    <Mes>1</Mes>
-    <Año>1950</Año>
-  </Cliente>
-  <Cliente>
     <Nombre>Jesus</Nombre>
     <Apellido>Salvador</Apellido>
     <Apellido2>Barcenilla</Apellido2>
-    <TipoID>qwe</TipoID>
-    <NIF>09030912</NIF>
+    <TipoID>DNI</TipoID>
+    <NIF>09030912P</NIF>
     <Email>jesus.salvador.barcenilla@gmail.com</Email>
-    <Contraseña>qwe</Contraseña>
-    <Direccion Numero="1" ID="3245243532">qwe-qwe</Direccion>
-    <Telefono Numero="1">3242341323123</Telefono>
-    <FaltaProducto>No servir</FaltaProducto>
+    <Contraseña>1234</Contraseña>
+    <Direccion ID="1085746750">Tarragona-Alcala de Henares</Direccion>
+    <Telefono>918884108</Telefono>
+    <FaltaProducto>Sustituir por uno similar</FaltaProducto>
     <Info>Si</Info>
-    <Dia>1</Dia>
-    <Mes>1</Mes>
-    <Año>1950</Año>    
+    <Dia>9</Dia>
+    <Mes>12</Mes>
+    <Año>1986</Año>
   </Cliente>
 </Clientes>

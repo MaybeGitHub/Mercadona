@@ -1,0 +1,41 @@
+﻿<Datos>
+  <TipoID>
+    <ID>DNI</ID>
+    <ID>NIF</ID>
+    <ID>Tarjeta de residente</ID>
+    <ID>Pasaporte</ID>
+    <ID>CIF</ID>
+  </TipoID>
+  <TipoCalle>
+    <Calle>Alameda</Calle>
+    <Calle>Apartamentos</Calle>
+    <Calle>Autovía</Calle>
+    <Calle>Avenida</Calle>
+    <Calle>Calle</Calle>
+    <Calle>Callejón</Calle>
+    <Calle>Camino</Calle>
+    <Calle>Carretera</Calle>
+    <Calle>Circunvalación</Calle>
+    <Calle>Colonia</Calle>
+    <Calle>Complejo</Calle>
+    <Calle>Edificio</Calle>
+    <Calle>Glorieta</Calle>
+    <Calle>Gran Via</Calle>
+    <Calle>Parcelas</Calle>
+    <Calle>Parque</Calle>
+    <Calle>Pasaje</Calle>
+    <Calle>Paseo</Calle>
+    <Calle>Plaza</Calle>
+    <Calle>Polígono</Calle>
+    <Calle>Prolongación</Calle>
+    <Calle>Puerto</Calle>
+    <Calle>Rambla</Calle>
+    <Calle>Residencial</Calle>
+    <Calle>Ronda</Calle>
+    <Calle>Sector</Calle>
+    <Calle>Sendero</Calle>
+    <Calle>Travesía</Calle>
+    <Calle>Urbanización</Calle>
+    <Calle>Vía</Calle>
+  </TipoCalle>
+</Datos>
