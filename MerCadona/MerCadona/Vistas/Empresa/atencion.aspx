@@ -113,6 +113,7 @@
             </asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell ColumnSpan="2">
                 <asp:CheckBox runat="server" ID="check_Edad" Text="Soy mayor de 14 años y he leído y acepto la Política de Confidencialidad y Protección de Datos" />
+                <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
             </asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell ColumnSpan="2">
                 <asp:CheckBox runat="server" ID="check_Autorizacion" Text="Autorizo a que mis datos se utilicen para informarme de productos y servicios, incluido por vía electrónica" />

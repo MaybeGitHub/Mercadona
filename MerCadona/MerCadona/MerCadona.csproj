@@ -81,6 +81,16 @@
     <Content Include="ficheros\Direcciones.xml" />
     <Content Include="imagenes\imagenes_CompraOnline\tarjetas_credito.jpg" />
     <Content Include="imagenes\imagenes_CompraOnline\tarjeta_mercadona.jpg" />
+    <Content Include="imagenes\imagenes_Inicio\compraOnline.png" />
+    <Content Include="imagenes\imagenes_Inicio\compraOnlineHover.png" />
+    <Content Include="imagenes\imagenes_Inicio\facturaOnline.png" />
+    <Content Include="imagenes\imagenes_Inicio\facturaOnlineHover.png" />
+    <Content Include="imagenes\imagenes_Inicio\nuestraEmpresa.png" />
+    <Content Include="imagenes\imagenes_Inicio\nuestraEmpresaHover.png" />
+    <Content Include="imagenes\imagenes_Inicio\tarjetaMercadona.png" />
+    <Content Include="imagenes\imagenes_Inicio\tarjetaMercadonaHover.png" />
+    <Content Include="imagenes\imagenes_Inicio\trabajaConNosotros.png" />
+    <Content Include="imagenes\imagenes_Inicio\trabajaConNosotrosHover.png" />
     <Content Include="imagenes\imagenes_NuestraEmpresa\parking.gif" />
     <Content Include="Vistas\Popups\altaCliente.aspx" />
     <Content Include="Vistas\Popups\altaDomicilio.aspx" />
@@ -138,10 +148,6 @@
     <Content Include="imagenes\imagenes_CompraOnline\serch_btn.png" />
     <Content Include="imagenes\imagenes_CompraOnline\TramosEntregaCompra.png" />
     <Content Include="imagenes\imagenes_Inicio\index_Cabecera.JPG" />
-    <Content Include="imagenes\imagenes_Inicio\index_Compra.JPG" />
-    <Content Include="imagenes\imagenes_Inicio\index_corp.JPG" />
-    <Content Include="imagenes\imagenes_Inicio\index_Factura.JPG" />
-    <Content Include="imagenes\imagenes_Inicio\index_trabaja.JPG" />
     <Content Include="imagenes\imagenes_Inicio\logomercavertical.gif" />
     <Content Include="imagenes\imagenes_NuestraEmpresa\logomercahorizontal325.gif" />
     <Content Include="imagenes\imagenes_NuestraEmpresa\marcas.gif" />

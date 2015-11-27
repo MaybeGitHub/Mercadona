@@ -20,25 +20,45 @@ namespace MerCadona.Vistas
         {
             telefono = Request.QueryString["telefono"];
             cliente = (Cliente)Session["Cliente"];
-            modificar = telefono != null;
+            modificar = telefono != null;            
 
-            if (modificar && !IsPostBack)
+            if (IsPostBack)
+            {
+                if (valido())
+                {
+                    if (!cliente.listaTelefonos.Contains(text_Telefono.Text)) cliente.listaTelefonos.Add(text_Telefono.Text);
+                    if (cliente.listaTelefonos.Contains(telefono)) cliente.listaTelefonos.Remove(telefono);
+                    Session["Cliente"] = cliente;
+                    Response.Write("<script>onunload=function(){opener.location='altaCliente.aspx';}</script>");
+                    Response.Write("<script>window.close();</script>");
+                }
+            }
+
+            if (modificar)
             {
                 text_Telefono.Text = telefono;
             }
         }
 
-
-        protected void button_Aceptar_Click(object sender, EventArgs e)
+        private bool valido()
         {
-            if (IsValid)
-            {                
-                if(!cliente.listaTelefonos.Contains(text_Telefono.Text)) cliente.listaTelefonos.Add(text_Telefono.Text);
-                if (cliente.listaTelefonos.Contains(telefono)) cliente.listaTelefonos.Remove(telefono);
-                Session["Cliente"] = cliente;
-                Response.Write("<script>onunload=function(){opener.location='altaCliente.aspx';}</script>");
-                Response.Write("<script>window.close();</script>");
+            if (text_Telefono.Text.Length != 9)
+            {
+                label_Error.Visible = true;
+                return false;
             }
+
+            // Metodo guarro de validar si solo tiene numeros
+
+            foreach (char c in text_Telefono.Text)
+            {
+                if (!"0123456789 ".Contains(c))
+                {
+                    label_Error.Visible = true;
+                    return false;
+                }
+            }
+            return true;
         }
 
         protected void button_Cancelar_Click(object sender, EventArgs e)

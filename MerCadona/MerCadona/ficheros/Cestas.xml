@@ -5,7 +5,8 @@
     <Cliente>09030912P</Cliente>
     <Direccion>1085746750</Direccion>
     <Telefono>918884108</Telefono>
-    <Producto Precio="0,29" Cantidad="2">LIMON ( VENTA POR UNIDADES), , (PESO APROXIMADO DE LA UNIDAD 180 GR)</Producto>
+    <Producto Precio="0,29" Cantidad="1">LIMON ( VENTA POR UNIDADES), , (PESO APROXIMADO DE LA UNIDAD 180 GR)</Producto>
+    <Producto Precio="0,36" Cantidad="1">LIMA ( VENTA POR UNIDADES ), , (PESO APROXIMADO DE LA UNIDAD 100 GR)</Producto>
   </Cesta>
   <Cesta>
     <Estado>Abierta</Estado>
@@ -15,5 +16,27 @@
     </Direccion>
     <Telefono>
     </Telefono>
+    <Producto Precio="0,36" Cantidad="1">LIMA ( VENTA POR UNIDADES ), , (PESO APROXIMADO DE LA UNIDAD 100 GR)</Producto>
+    <Producto Precio="1,00" Cantidad="1">ACELGAS FRESCAS, , BOLSA 300 G</Producto>
+  </Cesta>
+  <Cesta>
+    <Estado>Cerrada</Estado>
+    <ID>404817682</ID>
+    <Cliente>1234</Cliente>
+    <Direccion>1735277273</Direccion>
+    <Telefono>918884108</Telefono>
+    <Producto Precio="2,99" Cantidad="6">MANDARINA, , MALLA 3 KG</Producto>
+    <Producto Precio="0,89" Cantidad="5">CEBOLLA TIERNA, , PAQUETE 3 U</Producto>
+  </Cesta>
+  <Cesta>
+    <Estado>Abierta</Estado>
+    <ID>1337031791</ID>
+    <Cliente>1234</Cliente>
+    <Direccion>
+    </Direccion>
+    <Telefono>
+    </Telefono>
+    <Producto Precio="0,22" Cantidad="2">BANANA (VENTA POR UNIDADES), , (PESO APROXIMADO DE LA UNIDAD 200 GR</Producto>
+    <Producto Precio="0,26" Cantidad="1">PERA ALEJANDRINA (VENTA POR UNIDADES), , (PESO APROXIMADO DE LA UNIDAD 200 GR)</Producto>
   </Cesta>
 </Cestas>

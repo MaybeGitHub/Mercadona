@@ -13,13 +13,13 @@ namespace MerCadona.Vistas {
     public partial class index {
         
         /// <summary>
-        /// navegador control.
+        /// form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel navegador;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
         
         /// <summary>
         /// link_MapaWeb control.
@@ -49,15 +49,6 @@ namespace MerCadona.Vistas {
         protected global::System.Web.UI.WebControls.LinkButton link_Empleado;
         
         /// <summary>
-        /// contenido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel contenido;
-        
-        /// <summary>
         /// opciones control.
         /// </summary>
         /// <remarks>
@@ -65,51 +56,6 @@ namespace MerCadona.Vistas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table opciones;
-        
-        /// <summary>
-        /// imgButton_Compra control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Compra;
-        
-        /// <summary>
-        /// imgButton_Factura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Factura;
-        
-        /// <summary>
-        /// imgButton_Tarjeta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Tarjeta;
-        
-        /// <summary>
-        /// imgButton_Trabaja control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Trabaja;
-        
-        /// <summary>
-        /// imgButton_Empresa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButton_Empresa;
         
         /// <summary>
         /// button_Canal control.

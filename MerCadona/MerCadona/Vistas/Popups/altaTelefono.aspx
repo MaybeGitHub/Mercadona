@@ -17,12 +17,18 @@
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Center">
                 <asp:TableCell ColumnSpan="2">
-                    <asp:Label runat="server" Text="Telefono"></asp:Label>                    
+                    <asp:Label runat="server" Text="Telefono"></asp:Label>  
+                    <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Center">
                 <asp:TableCell ColumnSpan="2">
                     <asp:TextBox runat="server" Width="70%" ID="text_Telefono"></asp:TextBox>                    
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell HorizontalAlign="Center" ColumnSpan="2">
+                    <asp:Label runat="server" ID="label_Error" ForeColor="DarkRed" Font-Size="Smaller" Text="El formato del telefono es incorrecto" Visible="false" ></asp:Label>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Center">
@@ -32,7 +38,7 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell Width="50%" HorizontalAlign="Center">
-                    <asp:Button runat="server" ID="button_Aceptar" Text="ACEPTAR" ForeColor="DarkGreen" BackColor="White" BorderColor="DarkGreen" BorderWidth="1px" OnClick="button_Aceptar_Click"/>
+                    <asp:Button runat="server" ID="button_Aceptar" Text="ACEPTAR" ForeColor="DarkGreen" BackColor="White" BorderColor="DarkGreen" BorderWidth="1px"/>
                 </asp:TableCell>
                 <asp:TableCell Width="50%" HorizontalAlign="Center">
                     <asp:Button runat="server" ID="button_Cancelar" Text="CANCELAR" ForeColor="DarkGreen" BackColor="White" BorderColor="DarkGreen" BorderWidth="1px" OnClick="button_Cancelar_Click"/>

@@ -50,16 +50,24 @@ namespace MerCadona.Vistas
 
         private bool validar()
         {
-            // Habria que validar todos los campos... 
+            // Habria que validar todos los campos con expresiones regulares... 
 
             if (textarea_Mensaje.Text == "" ) 
             {
                 label_ErrorMensaje.Visible = true;
                 return false;
             }
+            else label_ErrorMensaje.Visible = false;
+
             if (!radio_Felicitacion.Checked && !radio_Informacion.Checked && !radio_Reclamacion.Checked && !radio_Sugerencia.Checked)
             {
                 label_ErrorAsunto.Visible = true;
+                return false;
+            }
+            else label_ErrorAsunto.Visible = false;
+
+            if (!check_Edad.Checked)
+            {                
                 return false;
             }
             return true;            

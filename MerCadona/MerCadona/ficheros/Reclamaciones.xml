@@ -53,4 +53,22 @@
     <Firma>Si</Firma>
     <Mensaje>asd</Mensaje>
   </Reclamacion>
+  <Reclamacion>
+    <Leido>Si</Leido>
+    <Asunto>Felicitacion</Asunto>
+    <Nombre>Jesus Salvador Barcenilla</Nombre>
+    <DNI>09030912P</DNI>
+    <Telefono>918884108</Telefono>
+    <Email>jesus.salvador.barcenilla@gmail.com</Email>
+    <Provincia>Madrid</Provincia>
+    <Localidad>Alcala de Henares</Localidad>
+    <CP>28804</CP>
+    <TipoVia>Calle</TipoVia>
+    <NombreVia>Tarragona</NombreVia>
+    <Numero>8</Numero>
+    <Mayor14>Si</Mayor14>
+    <Informacion>Si</Informacion>
+    <Firma>Si</Firma>
+    <Mensaje>que buena pagina !!</Mensaje>
+  </Reclamacion>
 </Reclamaciones>

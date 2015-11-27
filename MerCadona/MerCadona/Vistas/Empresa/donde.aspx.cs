@@ -33,11 +33,10 @@ namespace MerCadona.Vistas
                 tabla_Inicial.Visible = false;
                 tabla_Filtrado.Visible = true;
                 tabla_Filtrado2.Visible = true;
-                generarListProvincia();                
+                generarListProvincia();               
                 listaSupermercados = cXml.lecturaXMLSupermercados(Server.MapPath("~/ficheros/Supermercados.xml"), provincia);
                 generarListLocalidad();
-                generarListHorario();
-                
+                generarListHorario();                
                 generarDatosFiltrados(); 
                                                
             }else generarListProvincia();
@@ -46,6 +45,8 @@ namespace MerCadona.Vistas
         private void generarListHorario()
         {
             List<string> lista = listaSupermercados.Select(supermercado => supermercado.horario).Distinct().ToList();
+            lista.Sort();   
+            list_Horarios.Items.Clear();
             lista.ForEach(horario => list_Horarios.Items.Add(new ListItem(horario, horario)));
             list_Horarios.SelectedValue = horario;
         }
@@ -53,6 +54,8 @@ namespace MerCadona.Vistas
         private void generarListLocalidad()
         {
             List<string> lista = listaSupermercados.Select(supermercado => supermercado.localidad).Distinct().ToList();
+            lista.Sort();
+            list_Localidad.Items.Clear();
             lista.ForEach(localidad => list_Localidad.Items.Add(new ListItem(localidad, localidad)));
             list_Localidad.SelectedValue = localidad;
         }
@@ -60,10 +63,12 @@ namespace MerCadona.Vistas
         private void generarListProvincia()
         {
             List<string> lista = File.ReadAllLines(Server.MapPath("~/ficheros/provincias.csv")).ToList();
-            if(!IsPostBack)
-                lista.ForEach(provincia => list_Provincias.Items.Add(new ListItem(provincia.Split(';')[1], provincia.Split(';')[1])));
+            lista = lista.Select(linea => linea.Split(';')[1]).ToList();
+            lista.Sort();
+            if (!IsPostBack)
+                lista.ForEach(provincia => list_Provincias.Items.Add(new ListItem(provincia, provincia)));
             else
-                lista.ForEach(provincia => list_Provincia.Items.Add(new ListItem(provincia.Split(';')[1], provincia.Split(';')[1])));
+                lista.ForEach(provincia => list_Provincia.Items.Add(new ListItem(provincia, provincia)));
 
             list_Provincia.SelectedValue = provincia;
         }

@@ -19,4 +19,40 @@
     <CP>28804</CP>
     <Habitual>Si</Habitual>
   </Direccion>
+  <Direccion>
+    <ID>1205945188</ID>
+    <TipoVia>Alameda</TipoVia>
+    <NombreVia>wer</NombreVia>
+    <Numero>wer</Numero>
+    <Piso>wer</Piso>
+    <Puerta>wer</Puerta>
+    <Urba>wer</Urba>
+    <Bloque>wer</Bloque>
+    <Escalera>
+    </Escalera>
+    <Observaciones>wer</Observaciones>
+    <Localidad>wer</Localidad>
+    <CP>wer</CP>
+    <Habitual>Si</Habitual>
+  </Direccion>
+  <Direccion>
+    <ID>1735277273</ID>
+    <TipoVia>Alameda</TipoVia>
+    <NombreVia>Tarragona</NombreVia>
+    <Numero>8</Numero>
+    <Piso>
+    </Piso>
+    <Puerta>c</Puerta>
+    <Urba>
+    </Urba>
+    <Bloque>
+    </Bloque>
+    <Escalera>
+    </Escalera>
+    <Observaciones>
+    </Observaciones>
+    <Localidad>Alcala de Henares</Localidad>
+    <CP>28804</CP>
+    <Habitual>No</Habitual>
+  </Direccion>
 </Direcciones>

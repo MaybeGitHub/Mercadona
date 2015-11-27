@@ -15,4 +15,20 @@
     <Mes>12</Mes>
     <Año>1986</Año>
   </Cliente>
+  <Cliente>
+    <Nombre>Jesusin</Nombre>
+    <Apellido>Salvadorin</Apellido>
+    <Apellido2>Barcenillin</Apellido2>
+    <TipoID>DNI</TipoID>
+    <NIF>1234</NIF>
+    <Email>deadlyfire17@hotmail.com</Email>
+    <Contraseña>123123123</Contraseña>
+    <Direccion ID="1735277273">Tarragona-Alcala de Henares</Direccion>
+    <Telefono>918884108</Telefono>
+    <FaltaProducto>Sustituir por uno similar</FaltaProducto>
+    <Info>Si</Info>
+    <Dia>10</Dia>
+    <Mes>9</Mes>
+    <Año>1986</Año>
+  </Cliente>
 </Clientes>

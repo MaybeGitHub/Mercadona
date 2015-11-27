@@ -19,47 +19,68 @@ namespace MerCadona.Vistas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Para que nadie entre en esta pagina sin loguearse primero
+
+            if (Request.Cookies["Cliente"] == null) Response.Redirect("~/Vistas/Principales/entrada.aspx");
+
             Cliente cliente = cXml.fabricarCliente(Server.MapPath("~/ficheros/Clientes.xml"), Request.Cookies["Cliente"].Value);            
 
             if (IsPostBack)
-            {               
+            {                
                 foreach (string key in Request.Params)
                 {                   
+                           
+                    // Para saber categoria
+
                     if (key == "__EVENTARGUMENT" && Request.Params[key].Split('\\').Count() > 1)
                     {
                         ViewState["Categoria"] = Request.Params[key].Split('\\')[1];                        
                     }
 
+                    // Para comprar Producto
+
                     if (key.Contains("imgButton_Productos_") && key.Contains("x"))
                     {
-                       cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), key.Split('_')[2], key.Split('_')[3].Split('.')[0]);
+                       cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), ViewState["Categoria"].ToString(), key.Split('_')[2], key.Split('_')[3].Split('.')[0]);
                     }
+
+                    // Para borrar Producto
 
                     if (key.Contains("imgButton_BorrarProducto_") && key.Contains("x"))
                     {
                         cXml.borrarProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, key.Split('_')[2].Split('.')[0]);
                     }
 
+                    // Para ir a Formalizar
+
                     if(key.Contains("imgButton_Formalizar") && key.Contains("x"))
                     {                        
                         Response.Redirect("~/Vistas/Carrito/formalizar.aspx");
                     }
 
+                    // Para añadir un Producto con el boton + de la cesta
+
                     if (key.Contains("button_SumarProducto_Cesta"))
                     {                        
-                        cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), key.Split('_')[3], "1");
+                        cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), ViewState["Categoria"].ToString(), key.Split('_')[3], "1");
                     }
+
+                    // Para restar un Producto con el boton - de la cesta
 
                     if (key.Contains("button_RestarProducto_Cesta"))
                     {
-                        cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), key.Split('_')[3], "-1");
+                        cXml.añadirProducto(Server.MapPath("~/ficheros/Cestas.xml"), cliente.NIF, Server.MapPath("~/ficheros/SECCIONES_SUBSECCIONES.xml"), ViewState["Categoria"].ToString(), key.Split('_')[3], "-1");
                     }
+
+                    // Para añadir un Producto con el boton + del panel centra
 
                     if (key.Contains("button_SumarProducto_Body_"))
                     {
                         queProducto = key.Split('_')[3];
                         cantidad = int.Parse(key.Split('_')[4]) + 1;
                     }
+
+                    // Para restar un Producto con el boton - del panel central
 
                     if (key.Contains("button_RestarProducto_Body_"))
                     {
@@ -68,12 +89,16 @@ namespace MerCadona.Vistas
                         cantidad = cuantos - 1 >= 1 ? cuantos - 1 : cuantos;
                     }
 
+                    // Para ir a altaCliente a Modificar Datos
+
                     if (key.Contains("BotonModDatos"))
                     {
                         Session["cliente"] = cliente;
                         Response.Cookies.Add(new HttpCookie("lastPage", "~/Vistas/Carrito/carrito.aspx"));
                         Response.Redirect("~/Vistas/Popups/altaCliente.aspx");
                     }
+
+                    // Para ver, comprobar ( imprimir y desgargar no se como hacerlo ) los pedidos que existen para el Cliente
 
                     if (key.Contains("BotonModPedido"))
                     {

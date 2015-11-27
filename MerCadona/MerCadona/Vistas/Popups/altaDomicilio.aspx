@@ -18,12 +18,15 @@
                 <asp:TableRow HorizontalAlign="Center">
                     <asp:TableCell>
                         <asp:Label runat="server" Text="Tipo Via"></asp:Label>
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell Width="20%">
                         <asp:Label runat="server" Text="Nombre Via"></asp:Label>
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell Width="20%">
                         <asp:Label runat="server" Text="Nº/Km"></asp:Label>
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell Width="20%">
                         <asp:Label runat="server" Text="Piso"></asp:Label>
@@ -84,14 +87,16 @@
                 <asp:TableRow HorizontalAlign="Center">
                     <asp:TableCell Width="30%">
                         <asp:Label runat="server" Text="Localidad"></asp:Label>
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell Width="30%" ColumnSpan="4">
                         <asp:Label runat="server" Text="Codigo Postal"></asp:Label>
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow HorizontalAlign="Center">
                     <asp:TableCell Width="30%">
-                        <asp:TextBox runat="server" ID="text_Localdidad" Width="60%"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="text_Localdidad" Width="250px"></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell Width="30%" ColumnSpan="4">
                         <asp:TextBox runat="server" ID="text_CP" Width="20%"></asp:TextBox>
@@ -104,7 +109,14 @@
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
-                    <asp:TableCell ColumnSpan="5" HorizontalAlign="Right">
+                    <asp:TableCell HorizontalAlign="Left">
+                        <asp:Label runat="server" Text="*" ForeColor="DarkRed" style="margin-left:50px"></asp:Label>
+                        <asp:Label runat="server" Text="Campos obligatorios" Font-Size="Smaller" style="margin-left:10px"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell HorizontalAlign="Center">
+                        <asp:Label runat="server" ID="label_ErrorVacio" Text="Aun faltan campos importantes vacios" ForeColor="DarkRed" Font-Size="Smaller" style="margin-left:50px" Visible="false"></asp:Label>                        
+                    </asp:TableCell>
+                    <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                         <asp:Button runat="server" ID="button_Aceptar" Text="ACEPTAR" ForeColor="DarkGreen" BackColor="White" BorderColor="DarkGreen" BorderWidth="1px" OnClick="button_Aceptar_Click" />
                         <asp:Button runat="server" Text="CANCELAR" ForeColor="DarkGreen" BackColor="White" BorderColor="DarkGreen" BorderWidth="1px" style="margin-left:10px" OnClick="button_Cancelar_Click"/>
                     </asp:TableCell>

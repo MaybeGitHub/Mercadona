@@ -16,7 +16,10 @@ namespace MerCadona.Vistas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Para que nadie pueda entrar sin loguearse primero
+
             if (Request.QueryString["nombre"] == null) Response.Redirect("~/Vistas/Principales/loginEmpleados.aspx");
+
             label_Empleado.Text = "Empleado: " + Request.QueryString["nombre"];
             int pos = list_Reclamaciones.SelectedIndex;
             listaReclamaciones = cXml.reclamacionesNoLeidas(Server.MapPath("~/ficheros/Reclamaciones.xml"));            

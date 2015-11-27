@@ -53,7 +53,7 @@ namespace MerCadona.Vistas
 
         protected void button_Aceptar_Click(object sender, EventArgs e)
         {
-            if (IsValid)
+            if (valido())
             {
                 cXml.añadirDireccion(Server.MapPath("~/ficheros/Direcciones.xml"), dir);
                 if (!cliente.listaIdDirecciones.Values.Contains(dir.id)) cliente.listaIdDirecciones.Add(dir.nombreVia + "-" + dir.localidad, dir.id);
@@ -61,6 +61,23 @@ namespace MerCadona.Vistas
                 Response.Write("<script>onunload=function(){opener.location='altaCliente.aspx';}</script>");
                 Response.Write("<script>window.close();</script>");
             }
+        }
+
+        private bool valido()
+        {
+            if (text_NombreVia.Text == ""
+            || text_Numero.Text == ""
+            || text_Localdidad.Text == ""
+            || text_CP.Text == "")
+            {
+                label_ErrorVacio.Visible = true;
+                return false;
+            }
+            else
+            {
+                label_ErrorVacio.Visible = false;
+            }
+            return true;
         }
 
         private void rellenarDireccion()

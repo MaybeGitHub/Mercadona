@@ -15,7 +15,12 @@ namespace MerCadona.Vistas
         private Cliente cliente;
 
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
+            if (Session["Cliente"] == null) Response.Redirect("~/Vistas/Principales/entrada.aspx");
+
+            list_Año.Items.Clear();
+            list_Mes.Items.Clear();
+            list_Dia.Items.Clear();
             for (int año = 1950; año <= DateTime.Now.Year; año++) list_Año.Items.Add(new ListItem(año.ToString()));
             for (int mes = 1; mes <= 12; mes++) list_Mes.Items.Add(new ListItem(mes.ToString()));
             for (int dia = 1; dia <= 31; dia++) list_Dia.Items.Add(new ListItem(dia.ToString()));
@@ -46,7 +51,7 @@ namespace MerCadona.Vistas
 
                     if (key.Contains("button_Enviar"))
                     {
-                        if (list_Direcciones.SelectedItem.Text != "No se han definido direcciones de entrega" && list_Telefonos.SelectedItem.Text != "No se han definido telefonos")
+                        if (valido())
                         {
                             rellenarCliente();
                             cXml.modificarCliente(Server.MapPath("~/ficheros/Clientes.xml"), cliente);
@@ -73,6 +78,47 @@ namespace MerCadona.Vistas
             {
                 rellenarCampos();
             } 
+        }
+
+        private bool valido()
+        {
+            if( list_Direcciones.SelectedItem.Text == "No se han definido direcciones de entrega"
+             || list_Telefonos.SelectedItem.Text == "No se han definido telefonos"
+             || text_Nombre.Text == ""
+             || text_NumeroID.Text == ""
+             || text_Email.Text == ""
+             || text_Contraseña.Text == ""
+             || !check_Legales.Checked)
+            {
+                label_ErrorVacio.Visible = true;
+                return false;
+            }else
+            {
+                label_ErrorVacio.Visible = false;
+            }
+
+            if (text_Email.Text != text_Email2.Text)
+            {
+                label_ErrorMatch.Text = "El email no coincide con su confirmacion";
+                label_ErrorMatch.Visible = true;
+                return false;
+            }
+            else
+            {
+                label_ErrorMatch.Visible = false;
+            }
+
+            if (text_Contraseña.Text != text_Contraseña2.Text)
+            {
+                label_ErrorMatch.Text = "La contraseña no coincide con su confirmacion";
+                label_ErrorMatch.Visible = true;
+                return false;
+            }
+            else
+            {
+                label_ErrorMatch.Visible = false;
+            }            
+            return true;
         }
 
         private void rellenarCampos()

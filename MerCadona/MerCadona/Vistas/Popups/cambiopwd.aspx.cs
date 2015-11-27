@@ -12,6 +12,8 @@ namespace MerCadona.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["email"] == null) Response.Redirect("~/Vistas/Principales/index.aspx");
+                        
             text_Email.Text = Request.QueryString["email"];
         }
 

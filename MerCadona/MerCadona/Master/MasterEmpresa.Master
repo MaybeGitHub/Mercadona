@@ -10,38 +10,49 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_NuestraEmpresa/logomercahorizontal325.gif" PostBackUrl="~/Vistas/Principales/index.aspx" Height="40px" Width="130px"/>
-        <asp:Panel runat="server" Width="100%">
-            <asp:Table runat="server" Width="100%" CellPadding="10" BackColor="DarkGreen">
-                <asp:TableRow HorizontalAlign="Center">
-                    <asp:TableCell Width="70px">
-                        <asp:LinkButton ID="link_Inicio" runat="server" Text="INICIO" PostBackUrl="~/Vistas/Principales/index.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="70px">
-                        <asp:LinkButton ID="link_Empresa" runat="server" Text="EMPRESA" ForeColor="White" PostBackUrl="~/Vistas/Empresa/empresa.aspx" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="150px">
-                        <asp:LinkButton ID="link_Where" runat="server" Text="¿DÓNDE ESTAMOS?" PostBackUrl="~/Vistas/Empresa/donde.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="180px">
-                        <asp:LinkButton ID="link_AtencionCliente" runat="server" Text="ATENCIÓN AL CLIENTE" PostBackUrl="~/Vistas/Empresa/atencion.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="70px">
-                        <asp:LinkButton ID="link_Ventajas" runat="server" Text="VENTAJAS" ForeColor="White" PostBackUrl="~/Vistas/Empresa/ventajas.aspx" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="165px">
-                        <asp:LinkButton ID="link_ModeloGestion" runat="server" Text="MODELO DE GESTIÓN" PostBackUrl="~/Vistas/Empresa/modelo.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell Width="70px">
-                        <asp:LinkButton ID="link_Noticias" runat="server" Text="NOTICIAS" ForeColor="White" PostBackUrl="~/Vistas/Empresa/noticias.aspx" Font-Underline="false" ></asp:LinkButton>
-                    </asp:TableCell>                
-                </asp:TableRow>
-            </asp:Table>
-        </asp:Panel>
-        <asp:Panel runat="server" ID="panel_Content">
-            <asp:ContentPlaceHolder ID="contentPanel_body" runat="server">            
-            </asp:ContentPlaceHolder>
-        </asp:Panel>
+        <div style="width:1280px; margin:20px auto">
+            <asp:ImageButton runat="server" ToolTip="Regresa a la pagina de Inicio" ImageUrl="~/imagenes/imagenes_CompraOnline/imagenes_autentificacion/mercadona_horizontal.gif" PostBackUrl="~/Vistas/Principales/index.aspx" Height="45px" Width="260px"/>
+            <asp:Panel runat="server" Width="100%">
+                <asp:Table runat="server" Width="100%" CellPadding="10" BackColor="DarkGreen" CellSpacing="0">
+                    <asp:TableRow HorizontalAlign="Center">
+                        <asp:TableCell Width="70px">
+                            <asp:LinkButton ID="link_Inicio" runat="server" Text="INICIO" PostBackUrl="~/Vistas/Principales/index.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="70px">
+                            <asp:LinkButton ID="link_Empresa" runat="server" Text="EMPRESA" ForeColor="White" PostBackUrl="~/Vistas/Empresa/empresa.aspx" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="150px">
+                            <asp:LinkButton ID="link_Where" runat="server" Text="¿DÓNDE ESTAMOS?" PostBackUrl="~/Vistas/Empresa/donde.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="180px">
+                            <asp:LinkButton ID="link_AtencionCliente" runat="server" Text="ATENCIÓN AL CLIENTE" PostBackUrl="~/Vistas/Empresa/atencion.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="70px">
+                            <asp:LinkButton ID="link_Ventajas" runat="server" Text="VENTAJAS" ForeColor="White" PostBackUrl="~/Vistas/Empresa/ventajas.aspx" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="165px">
+                            <asp:LinkButton ID="link_ModeloGestion" runat="server" Text="MODELO DE GESTIÓN" PostBackUrl="~/Vistas/Empresa/modelo.aspx" ForeColor="White" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell Width="70px">
+                            <asp:LinkButton ID="link_Noticias" runat="server" Text="NOTICIAS" ForeColor="White" PostBackUrl="~/Vistas/Empresa/noticias.aspx" Font-Underline="false" ></asp:LinkButton>
+                        </asp:TableCell>                
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell BackColor="Turquoise">
+
+                        </asp:TableCell>
+                        <asp:TableCell ColumnSpan="5" BackColor="White">
+                            <asp:ContentPlaceHolder ID="contentPanel_body" runat="server">            
+                            </asp:ContentPlaceHolder>
+                        </asp:TableCell>
+                        <asp:TableCell  BackColor="Turquoise">
+
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </asp:Panel>            
+                            
+        </div>
     </form>
 </body>
 </html>

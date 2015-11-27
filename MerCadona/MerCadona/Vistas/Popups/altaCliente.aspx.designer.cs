@@ -229,6 +229,24 @@ namespace MerCadona.Vistas {
         protected global::System.Web.UI.WebControls.CheckBox check_Legales;
         
         /// <summary>
+        /// label_ErrorVacio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_ErrorVacio;
+        
+        /// <summary>
+        /// label_ErrorMatch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_ErrorMatch;
+        
+        /// <summary>
         /// button_Enviar control.
         /// </summary>
         /// <remarks>

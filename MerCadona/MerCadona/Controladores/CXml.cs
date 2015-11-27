@@ -306,29 +306,32 @@ namespace MerCadona.Controladores
             return false;
         }
 
-        public void añadirProducto(string pathCesta, string NIF, string pathProducto, string producto, string cuantos)
+        public void añadirProducto(string pathCesta, string NIF, string pathProducto, string categoria, string producto, string cuantos)
         {
             XmlDocument xDocCesta = new XmlDocument();
             xDocCesta.Load(pathCesta);
             XmlDocument xDocProducto = new XmlDocument();
             xDocProducto.Load(pathProducto);
 
-            string elemento = null;
             string precio = null;
-            XmlNodeList listaNodos = xDocProducto.DocumentElement.SelectNodes("/Secciones/Seccion/SubSeccion/Producto");
-            XmlNode nodoProducto = listaNodos.Item(int.Parse(producto));
-
-            elemento = nodoProducto.InnerText;
-            precio = nodoProducto.Attributes["Precio"].Value;            
-
+            foreach (XmlNode nodoSubSeccion in xDocProducto.DocumentElement.SelectNodes("/Secciones/Seccion/SubSeccion"))
+            {                    
+                if(nodoSubSeccion.Attributes["Nombre"].Value == categoria)
+                {
+                    XmlNode nodoProducto = nodoSubSeccion.ChildNodes.Item(int.Parse(producto));                         
+                    producto = nodoProducto.InnerText;
+                    precio = nodoProducto.Attributes["Precio"].Value;                           
+                }
+            }
+           
             bool duplicado = false;
             foreach (XmlNode xNode in xDocCesta.DocumentElement.SelectNodes("/Cestas/Cesta"))
             {
-                if (xNode.SelectSingleNode("Cliente").InnerText == NIF)
+                if (xNode.SelectSingleNode("Cliente").InnerText == NIF && xNode.SelectSingleNode("Estado").InnerText == "Abierta")
                 {                    
                     foreach(XmlNode xxNode in xNode.SelectNodes("Producto"))
                     {
-                        if(xxNode.InnerText == elemento)
+                        if(xxNode.InnerText == producto)
                         {
                             if ((int.Parse(xxNode.Attributes["Cantidad"].Value) + int.Parse(cuantos)) > 0)
                             {
@@ -343,12 +346,12 @@ namespace MerCadona.Controladores
                     if (!duplicado)
                     {
                         XmlNode nuevo = xDocCesta.CreateNode(XmlNodeType.Element, "Producto", null);
-                        nuevo.InnerText = elemento;
+                        nuevo.InnerText = producto;
                         XmlAttribute attr = xDocCesta.CreateAttribute("Precio");
                         attr.Value = precio;
                         nuevo.Attributes.Append(attr);
                         attr = xDocCesta.CreateAttribute("Cantidad");
-                        attr.Value = "1";
+                        attr.Value = cuantos;
                         nuevo.Attributes.Append(attr);
                         xNode.AppendChild(nuevo);
                         break;
@@ -603,9 +606,12 @@ namespace MerCadona.Controladores
             xDoc.Load(path);
             foreach (XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
             {
-                if( xNode.SelectSingleNode("Email").InnerText == email) xNode.SelectSingleNode("Contraseña").InnerText = nuevaContraseña;
-                xDoc.Save(path);
-                break;
+                if (xNode.SelectSingleNode("Email").InnerText == email)
+                {
+                    xNode.SelectSingleNode("Contraseña").InnerText = nuevaContraseña;
+                    xDoc.Save(path);
+                    break;
+                }
             }
         }
 
@@ -615,7 +621,10 @@ namespace MerCadona.Controladores
             xDoc.Load(path);
             foreach(XmlNode xNode in xDoc.DocumentElement.SelectNodes("/Clientes/Cliente"))
             {
-               return xNode.SelectSingleNode("NIF").InnerText == NIF ? true : false;
+                if(xNode.SelectSingleNode("NIF").InnerText == NIF)
+                {
+                    return true;
+                }
             }
             return false;
         }
